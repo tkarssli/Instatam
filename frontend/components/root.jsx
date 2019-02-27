@@ -1,14 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-import App from './app';
+import AppContainer from './app/app_container';
+import Splash from './splash/splash'
 
-const Root = ({store}) => (
+const Root = ({store}) => {
+    // debugger
+    const state = store.getState()
+    return(
     <Provider store={ store }>
         <HashRouter>
-            <App/>
+            <AppContainer />
         </HashRouter>
     </Provider>
-);
+)};
 
 export default Root;

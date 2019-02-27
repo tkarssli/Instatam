@@ -7,5 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ActiveRecord::Base.transaction do
+
+    demo = User.create(username: "Demo User", email: "Demo@User.com", password: "password")
     
 end
