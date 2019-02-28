@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index, :create]
     resource :session, only: [:create, :destroy]
   end
+
+  get '*path', to: redirect('/'), via: :all
 end
