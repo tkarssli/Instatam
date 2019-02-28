@@ -14,6 +14,7 @@ class SessionForm extends React.Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleDemoLogin = this.handleDemoLogin.bind(this)
     }
 
     handleSubmit(e) {
@@ -25,15 +26,22 @@ class SessionForm extends React.Component {
         }
     }
 
+    handleDemoLogin(e) {
+        const demo_user = {username:"Demo User", password: "password"}
+        this.props.demoLogin(demo_user)
+        this.props.history.push('/')
+    }
+
     update(field) {
         return (e) => {
             this.setState({[field]: e.target.value})
         }
     }
 
+
+
     render() {
-        const { errors, demoLogin, formType} = this.props
-        const demo_user = {username:"Demo User", password: "password"}
+        const { errors, formType} = this.props
         return (
              <>
                             
@@ -67,7 +75,7 @@ class SessionForm extends React.Component {
                 />
 
                 <input className="btn" type="submit" value={formType.charAt(0).toUpperCase() + formType.slice(1)}/>
-                <button className="btn" onClick={() => {demoLogin(demo_user)}}>Demo User</button>
+                <button className="btn" onClick={this.handleDemoLogin}>Demo User</button>
                     
                 </form>
              </>

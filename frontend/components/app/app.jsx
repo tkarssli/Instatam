@@ -5,32 +5,35 @@ import SignupFormContainer from '../session/signup_form_container';
 import NavbarContainer from '../navbar/navbar_container'
 import AuthRoute from '../../util/route_util'
 import SplashContainer from '../splash/splash_container'
+import PageNotFoundContainer from '../page_not_found_container'
 import Footer from '../footer/footer'
 const App = ({currentUser}) => (
         <HashRouter>
-            <>
-            {currentUser ? (
-                <>
-                    <NavbarContainer />
-                    <AuthRoute path="/login" component={LoginFormContainer}/>
-                    <AuthRoute path="/signup" component={SignupFormContainer}/>
-                </>
-            ): (
-                <>
-                <Switch>
-                    <Route path="/" component={SplashContainer}/>
-                    <Route component={SplashContainer}/>
-                </Switch>
-                    {/* <Redirect from="*" to="/" /> */}
-                </>
-            )}
-            
-    
-        
-        
-            <Footer />
+            <> 
+                <NavbarContainer/>
+                <section className="main-content">
+                    {currentUser ? (
+                        <>
+                        
+                            <Switch>
+                                <AuthRoute exact path="/" component="" />
+                                <AuthRoute exact path="/login" component={LoginFormContainer}/>
+                                <AuthRoute exact path="/signup" component={SignupFormContainer}/>
+                                <Route component={PageNotFoundContainer} />
+                            </Switch>
+                        </>
+                    ): (
+                        <>
+
+                        <Switch>
+                            <Route exact path="/(|login|signup)/" component={SplashContainer}/>
+                            <Route component={PageNotFoundContainer} />
+                        </Switch>
+                        </>
+                    )}
+                </section>
+                <Footer />
             </>
-            {/* <Route exact path="/" component={BenchIndexContainer}/> */}
         </HashRouter>
         )
 

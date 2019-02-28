@@ -27,12 +27,18 @@ html, body {
 #root  {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
+   
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
+}
+
+section.main-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -43,4 +49,9 @@ a {
 
 a:active {
     opacity: .7;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: bold;
 }

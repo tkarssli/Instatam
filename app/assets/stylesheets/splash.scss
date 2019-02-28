@@ -1,7 +1,16 @@
+
+
 section.splash-section{
     display: flex;
     align-items: center;
     height: 100%;
+}
+
+.splash-center {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    // height: 100%;
 }
 
 .splash-container{
