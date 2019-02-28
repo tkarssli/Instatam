@@ -89,22 +89,22 @@ section.splash-section{
             
         .image-cycler:nth-of-type(1) {
             animation-delay: 30s;
-            background-image: url("splash-stock4.png");
+            background-image: image-url("splash-stock4.png");
 
             }
         .image-cycler:nth-of-type(2) {
             animation-delay: 20s;
-            background-image: url("splash-stock2.png");
+            background-image: image-url("splash-stock2.png");
 
         }
         .image-cycler:nth-of-type(3) {
             animation-delay: 10s;
-            background-image: url("splash-stock3.png");
+            background-image: image-url("splash-stock3.png");
 
         }
         .image-cycler:nth-of-type(4) {
             animation-delay: 0;
-            background-image: url("splash-stock1.png");
+            background-image: image-url("splash-stock1.png");
 
         }
 

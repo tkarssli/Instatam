@@ -20,7 +20,7 @@ class Splash extends React.Component {
                     </div>
                     <div className="splash-right">
                         <div className="login-container box">
-                            <img src="assets/instatam.png" alt="Instatam"/>
+                            <img src={window.instatam} alt="Instatam"/>
                                 <Switch>
                                     <Route exact path="/" component={LoginFormContainer} location={this.props.location}/>
                                     <Route path="/login" component={LoginFormContainer}/>
