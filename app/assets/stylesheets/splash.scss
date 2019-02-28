@@ -63,7 +63,7 @@ section.splash-section{
     .image-container{
         width:350px;
         height: 500px;
-        background-image: url("phone.png");
+        background-image: image-url("phone.png");
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -94,12 +94,12 @@ section.splash-section{
             }
         .image-cycler:nth-of-type(2) {
             animation-delay: 20s;
-            background-image: image-url("splash-stock2.png");
+            background-image: image-url("splash-stock3.png");
 
         }
         .image-cycler:nth-of-type(3) {
             animation-delay: 10s;
-            background-image: image-url("splash-stock3.png");
+            background-image: image-url("splash-stock2.png");
 
         }
         .image-cycler:nth-of-type(4) {
@@ -110,6 +110,8 @@ section.splash-section{
 
     }
 }
+
+
 
 
 

@@ -6,7 +6,6 @@ import Splash from './splash/splash'
 import App from './app/app'
 
 const Root = ({store}) => {
-    const state = store.getState()
     return(
     <Provider store={ store }>
         <AppContainer/>
