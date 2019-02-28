@@ -1,0 +1,28 @@
+#root footer {
+    width: 900px;
+    margin-bottom: 40px;
+    
+    &>ul{
+        display: flex;
+        justify-content: space-around;
+    }
+    &>ul:nth-last-child(2) {
+        width:100px
+    }
+
+    li {
+        font-size: 13px;
+        list-style: none;
+
+        &>a{
+        font-weight: 500;
+
+        }
+    }
+    
+    p{
+        color: #999;
+    }
+
+    
+}

@@ -32,42 +32,42 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        const link_text = (this.props.formType === 'login') ? 'signup' : 'login';
-        const { errors, demoLogin} = this.props
+        const { errors, demoLogin, formType} = this.props
         const demo_user = {username:"Demo User", password: "password"}
         return (
              <>
-                <h2>{this.props.formType}</h2>
+                            
+                {(formType === 'signup' )? (<p>Sign up to see photos and videos from your friends</p>): ""}
+                <form className="userauth" onSubmit={this.handleSubmit}>
+                <ul className="errors">
+                    {errors.map(error => <li>{error}</li>)}
+                </ul>
 
-                {<span>{errors.join(" ")}</span>}
-                <form onSubmit={this.handleSubmit}>
+                <input 
+                    type="text" 
+                    onChange={this.update('username')} 
+                    value={this.state.username}
+                    placeholder="Username"
 
-                <label>Username:
+                />
+                {(formType === 'signup') ? (
                     <input 
                         type="text" 
-                        onChange={this.update('username')} 
-                        value={this.state.username}
-                    />
-                </label>
-                {(this.props.formType === 'signup') ? (
-                    <label>email:
-                        <input 
-                            type="text" 
-                            onChange={this.update('email')} 
-                            value={this.state.email}
-                        />
-                    </label>
-                ) : ""}
-                <label>password:
-                    <input 
-                        type="password" 
-                        onChange={this.update('password')} 
-                        value={this.state.password}
-                    />
-                </label>
+                        onChange={this.update('email')} 
+                        value={this.state.email}
+                        placeholder="Email"
 
-                <input type="submit" value={this.props.formType}/>
-                <button onClick={() => {demoLogin(demo_user)}}>Demo User</button>
+                    />
+                ) : ""}
+                <input 
+                    type="password" 
+                    onChange={this.update('password')} 
+                    value={this.state.password}
+                    placeholder="Password"
+                />
+
+                <input className="btn" type="submit" value={formType.charAt(0).toUpperCase() + formType.slice(1)}/>
+                <button className="btn" onClick={() => {demoLogin(demo_user)}}>Demo User</button>
                     
                 </form>
              </>

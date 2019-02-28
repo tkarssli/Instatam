@@ -3,15 +3,13 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import AppContainer from './app/app_container';
 import Splash from './splash/splash'
+import App from './app/app'
 
 const Root = ({store}) => {
-    // debugger
     const state = store.getState()
     return(
     <Provider store={ store }>
-        <HashRouter>
-            <AppContainer />
-        </HashRouter>
+        <AppContainer/>
     </Provider>
 )};
 

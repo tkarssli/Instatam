@@ -10,6 +10,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
@@ -28,7 +29,8 @@
   "scripts": {
     "build": "webpack",
     "build:watch": "webpack --watch --mode=development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -40,5 +42,9 @@
   "bugs": {
     "url": "https://github.com/tkarssli/Instatam/issues"
   },
-  "homepage": "https://github.com/tkarssli/Instatam#readme"
+  "homepage": "https://github.com/tkarssli/Instatam#readme",
+  "engines": {
+    "node": "11.10.0",
+    "npm": "6.7.0"
+  }
 }

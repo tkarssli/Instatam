@@ -14,5 +14,4 @@ const mapDispatchToProps = dispatch => ({
     demoLogin: user => dispatch(login(user))
 })
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm)

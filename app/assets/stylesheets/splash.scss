@@ -1,0 +1,153 @@
+section.splash-section{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.splash-container{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 50%;
+
+    div:nth-of-type(1){
+        margin-right: 20px;
+    }
+
+    .splash-right{
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+
+        .login-container{
+            
+            & > p {
+                color: #999;
+                font-size: 17px;
+                line-height: 20px;
+                font-weight: 600;
+                width: 250px;
+                padding: 0;
+                text-align: center;
+            }
+            
+            & > img{
+                margin-top: 20px;
+                width: 200px;
+
+            }
+        }
+
+        .box {
+            border: 1px solid #e6e6e6;
+            width: 350px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        p {
+            padding: 15px;
+
+        }
+    }
+
+    
+
+    .image-container{
+        width:350px;
+        height: 500px;
+        background-image: url("phone.png");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+
+        .image-cycler{
+            position: absolute;
+            left: 0;
+            width:350px;
+            height: 500px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            animation-name: phoneImageFade;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-duration: 40s;
+            // animation-direction: alternate;
+            
+            
+        }
+            
+        .image-cycler:nth-of-type(1) {
+            animation-delay: 30s;
+            background-image: url("splash-stock4.png");
+
+            }
+        .image-cycler:nth-of-type(2) {
+            animation-delay: 20s;
+            background-image: url("splash-stock2.png");
+
+        }
+        .image-cycler:nth-of-type(3) {
+            animation-delay: 10s;
+            background-image: url("splash-stock3.png");
+
+        }
+        .image-cycler:nth-of-type(4) {
+            animation-delay: 0;
+            background-image: url("splash-stock1.png");
+
+        }
+
+    }
+}
+
+
+
+@keyframes phoneImageFade {
+    0% {
+        opacity:1;
+    }
+    20% {
+        opacity:1;
+    }
+    25% {
+        opacity:0;
+    }
+    95% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+// For "n" images You must define:
+// a=presentation time for one image
+// b=duration for cross fading
+// Total animation-duration is of course t=(a+b)*n
+
+// animation-delay = t/n or = a+b
+
+// Percentage for keyframes:
+
+// 1. 0%
+// 2. a/t*100%
+// 3. (a+b)/t*100% = 1/n*100%
+// 4. 100%-(b/t*100%)
+// 5. 100%
+
+// for 4 images
+// b = 2
+// a = 8
+// n = 4
+// t= 40
