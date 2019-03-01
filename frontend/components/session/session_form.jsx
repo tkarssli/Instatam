@@ -36,17 +36,20 @@ class SessionForm extends React.Component {
         let ms = 0
         demo_user.username.split("").forEach((char, index) => {
             ms += (Math.random() * 200) + 50
+            // Create Timeouts for username
             setTimeout(() => {
                 this.setState({ username: this.state.username + char })
                 if (index === demo_user.username.length - 1) {
                     ms = 0
                     demo_user.password.split("").forEach((char, index) => {
                         ms += (Math.random() * 200) + 50
+
+                        // Create Timeouts for password
                         setTimeout(() => {
                             this.setState({ password: this.state.password + char })
                             if (index === demo_user.password.length - 1) {
                                 const user = Object.assign({}, this.state)
-                                this.props.processForm(user)
+                                this.props.demoLogin(user)
                             }
                         }, ms)
                     })
@@ -71,7 +74,7 @@ class SessionForm extends React.Component {
         return (
             <>
 
-                {(formType === 'signup') ? (<p>Sign up to see photos and videos from your friends</p>) : ""}
+                {(formType === 'signup') ? (<p><span className="bold">Sign up to see photos and videos from your friends</span></p>) : ""}
                 <form className="userauth" onSubmit={this.handleSubmit}>
 
 
@@ -101,9 +104,9 @@ class SessionForm extends React.Component {
                     <input className="btn" type="submit" value={formType.charAt(0).toUpperCase() + formType.slice(1)} />
                     <div className="btn" onClick={this.handleDemoLogin}>Demo User</div>
                     <ul className="errors">
-                        {errors.map(error => <li>{error}</li>)}
+                        {errors.map((error, index) => <li key={index}>{error}</li>)}
                     </ul>
-                    {(formType === 'signup') ? (<p>By signing up, you agree to our Terms , Data Policy and Cookies Policy .</p>) : ""}
+                    {(formType === 'signup') ? (<p className="terms">By signing up, you agree to our <span className="bold">Terms</span> , <span className="bold">Data Policy</span> and <span className="bold">Cookies Policy</span> .</p>) : ""}
 
                 </form>
             </>

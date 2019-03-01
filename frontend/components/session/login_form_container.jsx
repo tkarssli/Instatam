@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { login, clearErrors } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
-const mapStateToProps = (state, ownProps)=> ({
+const mapStateToProps = (state, ownProps) => ({
     errors: state.errors.session,
     formType: 'login',
 

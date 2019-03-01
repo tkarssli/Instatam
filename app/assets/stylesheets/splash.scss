@@ -21,7 +21,7 @@ section.splash-section {
     height: 50%;
 
     .splash-right {
-        min-height: 600px;
+        min-height: 450px;
         display: flex;
         flex-direction: column;
 
@@ -33,11 +33,19 @@ section.splash-section {
                 color: #AFAFAF;
                 font-size: 17px;
                 line-height: 20px;
-                font-weight: 600;
+
                 width: 250px;
                 padding: 0;
                 margin-bottom: 12px;
                 text-align: center;
+
+                .bold {
+                    font-weight: 600;
+                }
+
+                &.terms {
+                    font-size: 14px;
+                }
             }
 
             &>img {
@@ -50,8 +58,11 @@ section.splash-section {
         .signup-container {
             margin-top: 13px;
             color: #AFAFAF;
-            font-size: 15px;
 
+            a {
+                font-size: 14px;
+
+            }
         }
 
         .box {
