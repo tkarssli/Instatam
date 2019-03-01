@@ -61,4 +61,6 @@ Rails.application.configure do
 
   config.action_controller.allow_forgery_protection = false
 
+  config.active_storage.service = :amazon_dev
+
 end
