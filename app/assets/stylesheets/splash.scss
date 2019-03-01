@@ -1,6 +1,4 @@
-
-
-section.splash-section{
+section.splash-section {
     display: flex;
     align-items: center;
     height: 100%;
@@ -10,10 +8,11 @@ section.splash-section{
     display: flex;
     align-items: center;
     flex-grow: 1;
+    margin-top: 30px;
     // height: 100%;
 }
 
-.splash-container{
+.splash-container {
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -21,34 +20,39 @@ section.splash-section{
     width: 900px;
     height: 50%;
 
-    div:nth-of-type(1){
-        margin-right: 20px;
-    }
-
-    .splash-right{
-        height: 600px;
+    .splash-right {
+        background-color: white;
+        min-height: 600px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
 
 
-        .login-container{
-            
-            & > p {
-                color: #999;
+        .login-container {
+
+
+            & p {
+                color: #AFAFAF;
                 font-size: 17px;
                 line-height: 20px;
                 font-weight: 600;
                 width: 250px;
                 padding: 0;
+                margin-bottom: 12px;
                 text-align: center;
             }
-            
-            & > img{
-                margin: 20px 0 20px 0;
+
+            &>img {
+                margin: 20px 0 12px 0;
                 width: 200px;
 
             }
+        }
+
+        .signup-container {
+            margin-top: 13px;
+            color: #AFAFAF;
+            font-size: 15px;
+
         }
 
         .box {
@@ -67,22 +71,22 @@ section.splash-section{
         }
     }
 
-    
+
     // Cycling phone transition
-    .image-container{
-        width:350px;
-        height: 500px;
+    .image-container {
+        width: 425px;
+        height: 600px;
         background-image: image-url("phone.png");
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
         position: relative;
 
-        .image-cycler{
+        .image-cycler {
             position: absolute;
             left: 0;
-            width:350px;
-            height: 500px;
+            width: 425px;
+            height: 600px;
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -92,25 +96,28 @@ section.splash-section{
             animation-iteration-count: infinite;
             animation-duration: 40s;
             // animation-direction: alternate;
-            
-            
+
+
         }
-            
+
         .image-cycler:nth-of-type(1) {
             animation-delay: 30s;
             background-image: image-url("splash-stock4.png");
 
-            }
+        }
+
         .image-cycler:nth-of-type(2) {
             animation-delay: 20s;
             background-image: image-url("splash-stock3.png");
 
         }
+
         .image-cycler:nth-of-type(3) {
             animation-delay: 10s;
             background-image: image-url("splash-stock2.png");
 
         }
+
         .image-cycler:nth-of-type(4) {
             animation-delay: 0;
             background-image: image-url("splash-stock1.png");
@@ -126,19 +133,23 @@ section.splash-section{
 
 @keyframes phoneImageFade {
     0% {
-        opacity:1;
+        opacity: 1;
     }
+
     20% {
-        opacity:1;
+        opacity: 1;
     }
+
     25% {
-        opacity:0;
+        opacity: 0;
     }
+
     95% {
-        opacity:0;
+        opacity: 0;
     }
+
     100% {
-        opacity:1;
+        opacity: 1;
     }
 }
 
