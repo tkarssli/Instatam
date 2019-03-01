@@ -36,6 +36,7 @@ class SessionForm extends React.Component {
         let ms = 0
         demo_user.username.split("").forEach((char, index) => {
             ms += (Math.random() * 200) + 50
+
             // Create Timeouts for username
             setTimeout(() => {
                 this.setState({ username: this.state.username + char })
@@ -56,9 +57,6 @@ class SessionForm extends React.Component {
                 }
             }, ms)
         })
-        // this.props.processForm(demo_user)
-        // this.props.history.push('/')
-
     }
 
     update(field) {
