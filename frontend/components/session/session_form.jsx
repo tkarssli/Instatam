@@ -31,9 +31,31 @@ class SessionForm extends React.Component {
     }
 
     handleDemoLogin(e) {
-        const demo_user = { username: "Demo User", password: "password" }
-        this.props.demoLogin(demo_user)
-        this.props.history.push('/')
+        const demo_user = { username: "Demo User", password: "password", formType: 'login' }
+        this.setState({ username: "", password: "" })
+        let ms = 0
+        demo_user.username.split("").forEach((char, index) => {
+            ms += (Math.random() * 200) + 50
+            setTimeout(() => {
+                this.setState({ username: this.state.username + char })
+                if (index === demo_user.username.length - 1) {
+                    ms = 0
+                    demo_user.password.split("").forEach((char, index) => {
+                        ms += (Math.random() * 200) + 50
+                        setTimeout(() => {
+                            this.setState({ password: this.state.password + char })
+                            if (index === demo_user.password.length - 1) {
+                                const user = Object.assign({}, this.state)
+                                this.props.processForm(user)
+                            }
+                        }, ms)
+                    })
+                }
+            }, ms)
+        })
+        // this.props.processForm(demo_user)
+        // this.props.history.push('/')
+
     }
 
     update(field) {
@@ -77,7 +99,7 @@ class SessionForm extends React.Component {
                     />
 
                     <input className="btn" type="submit" value={formType.charAt(0).toUpperCase() + formType.slice(1)} />
-                    <button className="btn" onClick={this.handleDemoLogin}>Demo User</button>
+                    <div className="btn" onClick={this.handleDemoLogin}>Demo User</div>
                     <ul className="errors">
                         {errors.map(error => <li>{error}</li>)}
                     </ul>
