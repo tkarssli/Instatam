@@ -1,7 +1,11 @@
 class Api::UsersController < ApplicationController
     def show
-        @user = User.find(params[:id])
-        render :show
+        @user = User.find_by(id: params[:id])
+        if @user
+            render :show, status: 201
+        else
+            render json: "Not Found", status: 404
+        end
     end
 
     def index

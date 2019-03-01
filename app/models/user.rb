@@ -45,5 +45,7 @@ class User < ApplicationRecord
         self.save!
         return self.session_token
     end
+
+    has_many :posts
     
 end

@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   root 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do
+    # User Auth
     resources :users, only: [:show, :index, :create]
     resource :session, only: [:create, :destroy]
+    # Posts
+    resources :posts, only: [:index, :show, :create, :update, :destroy]
   end
 
   get '*path', to: redirect('/'), via: :all

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?
+    # helper_method :current_user, :logged_in?
 
     def logged_in?
       !!current_user
@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     def logout!
       @current_user.reset_session_token!
       session[:session_token] = nil
+    end
+
+    def require_login 
+      render json: "Must be Logged in to access this resource", status: 401 unless logged_in?
     end
     
 end
