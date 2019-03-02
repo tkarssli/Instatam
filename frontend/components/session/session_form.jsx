@@ -35,7 +35,7 @@ class SessionForm extends React.Component {
         this.setState({ username: "", password: "" })
         let ms = 0
         demo_user.username.split("").forEach((char, index) => {
-            ms += (Math.random() * 200) + 50
+            ms += (Math.random() * 150)
 
             // Create Timeouts for username
             setTimeout(() => {
@@ -43,7 +43,7 @@ class SessionForm extends React.Component {
                 if (index === demo_user.username.length - 1) {
                     ms = 0
                     demo_user.password.split("").forEach((char, index) => {
-                        ms += (Math.random() * 200) + 50
+                        ms += (Math.random() * 150)
 
                         // Create Timeouts for password
                         setTimeout(() => {
