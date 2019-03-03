@@ -7,6 +7,7 @@ import AuthRoute from '../../util/route_util'
 import SplashContainer from '../splash/splash_container'
 import PageNotFoundContainer from '../page_not_found_container'
 import Footer from '../footer/footer'
+import PostIndexContainer from '../post/post_index_container';
 const App = ({currentUser}) => (
         <HashRouter>
             <> 
@@ -16,7 +17,7 @@ const App = ({currentUser}) => (
                         <>
                         
                             <Switch>
-                                <AuthRoute exact path="/" component="" />
+                                <Route exact path="/" component={PostIndexContainer} />
                                 <AuthRoute exact path="/login" component={LoginFormContainer}/>
                                 <AuthRoute exact path="/signup" component={SignupFormContainer}/>
                                 <Route component={PageNotFoundContainer} />

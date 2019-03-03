@@ -1,0 +1,33 @@
+.post-index{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    margin-top: 16px;
+
+}
+
+.index-row{
+    display: flex;
+    margin-bottom: 28px;
+
+}
+
+.post {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    
+
+    margin-right: 28px;
+    height: 293px;
+    width: 293px;
+    overflow: hidden;
+
+}
+
+.post:nth-last-of-type(1){
+    margin-right: 0px;
+
+}
