@@ -7,12 +7,29 @@
 
 
 
-    .item-detail {
-        background: white;
-        min-width: 815px;
+    
+}
+
+.post-detail {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    background: white;
+    min-width: 815px;
+
+    .post-comments {
+        width: 335px;
+
     }
 
+    .image-container {
+        background: black;
+        display: flex;
+    }
 }
+
+
+
 
 .index-row{
     display: flex;

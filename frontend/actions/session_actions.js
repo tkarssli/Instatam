@@ -31,7 +31,7 @@ export const logout = () => dispatch => (
     ))
 );
 
-// Session/User actions
+// Session actions
 export const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
   user: currentUser
