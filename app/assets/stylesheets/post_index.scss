@@ -5,6 +5,12 @@
 
     margin-top: 16px;
 
+
+
+    .item-detail {
+        background: white;
+    }
+
 }
 
 .index-row{
@@ -18,12 +24,26 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+    position: relative;
     
 
     margin-right: 28px;
     height: 293px;
     width: 293px;
     overflow: hidden;
+
+    .post-hover {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    .post-hover:hover {
+        background:rgba(0, 0, 0, 0.3);
+    }
 
 }
 

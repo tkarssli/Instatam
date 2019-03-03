@@ -33,3 +33,8 @@
 .fade {
     opacity: 0;
 }
+
+.no-scroll {
+    position: fixed; 
+    overflow-y:scroll;
+}
