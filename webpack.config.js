@@ -1,5 +1,4 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   context: __dirname,
@@ -24,12 +23,4 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", "*"]
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      // relative path is from src
-      {
-        from: './app/assets/images/favicon.ico'
-      }, // <- your path to favicon
-    ])
-  ]
 };
