@@ -1,10 +1,17 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import PostIndexItem from './post_index_item';
 import Modal from '../modal/modal'
 
 class PostIndex extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { post: null}
+        
+    }
 
+    
     componentDidMount() {
         this.props.fetchPosts()
     }
@@ -36,4 +43,4 @@ class PostIndex extends React.Component {
     }
 }
  
-export default PostIndex;
+export default withRouter(PostIndex);
