@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 class Navbar extends React.Component {
     constructor(props) {
         super(props)
-        if (window.scrollY > 50) {
+        if (window.scrollY > 50 ) {
             this.state = { navClass: "navbar navbar-slim", fadeClass: "fade-container fade" }
         } else {
             this.state = { navClass: "navbar navbar-thick", fadeClass: "fade-container" }
@@ -15,7 +15,7 @@ class Navbar extends React.Component {
     }
 
     listenScrollEvent(e) {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 50 || this.props.modal) {
             this.setState({ navClass: "navbar navbar-slim", fadeClass: "fade-container fade" })
         } else {
             this.setState({ navClass: "navbar navbar-thick", fadeClass: "fade-container" })

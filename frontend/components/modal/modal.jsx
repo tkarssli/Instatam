@@ -2,7 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 
-import PostIndexItemDetail from '../post/post_index_item_detail';
+import PostIndexItemModal from '../post/post_index_item_detail';
 // import LoginFormContainer from '../session_form/login_form_container';
 // import SignupFormContainer from '../session_form/signup_form_container';
 
@@ -46,7 +46,7 @@ class Modal extends React.Component {
         let component;
         switch (modal) {
             case 'post':
-            component = <PostIndexItemDetail />;
+            component = <PostIndexItemModal />;
             break;
             default:
             return null;
