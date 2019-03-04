@@ -15,7 +15,7 @@ class Navbar extends React.Component {
     }
 
     listenScrollEvent(e) {
-        if (window.scrollY > 50 || this.props.modal) {
+        if (window.scrollY > 50 || this.props.modal.type) {
             this.setState({ navClass: "navbar navbar-slim", fadeClass: "fade-container fade" })
         } else {
             this.setState({ navClass: "navbar navbar-thick", fadeClass: "fade-container" })

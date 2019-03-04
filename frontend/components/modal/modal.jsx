@@ -8,22 +8,18 @@ import PostIndexItemModal from '../post/post_index_item_modal';
 // import SignupFormContainer from '../session_form/signup_form_container';
 
 class Modal extends React.Component {
-
-    componentDidMount() {
-        const body = document.getElementsByTagName('body')[0]
-    }
-
+    
     componentDidUpdate(){
+        const { scroll } = this.props
+        const body = document.getElementsByTagName('body')[0]
 
         // Stop body from scrolling while modal is open
-        const body = document.getElementsByTagName('body')[0]
-        if (this.props.modal.type) {
-            this.scrollTop = document.documentElement.scrollTop
-            body.style.top = `-${this.scrollTop}px`
+        if (modal.type) {
+            body.style.top = `-${scroll}px`
             body.classList.add('no-scroll')
         } else {
             body.classList.remove('no-scroll')
-            document.documentElement.scrollTop = this.scrollTop;
+            document.documentElement.scrollTop = scroll;
         }
     }
 
@@ -37,6 +33,7 @@ class Modal extends React.Component {
 
             case 'post':
                 component = <PostIndexItemModal post={modal.item}/>;
+
                 break;
 
             default:
