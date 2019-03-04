@@ -13,16 +13,17 @@ ActiveRecord::Base.transaction do
     User.destroy_all
 
     # DON'T DELETE #######################################################################
-    demo = User.create(username: "Demo User", email: "Demo@User.com", password: "password")
+    demo = User.create(username: "demo_user", full_name:"Demo User", email: "Demo@User.com", password: "password")
     ######################################################################################
 
-    u1 = User.create(username: "Tamir", email: "Tamir@Karssli.com", password: "password")
-    u2 = User.create(username: "Dorotea", email: "Dorotea@Italy.com", password: "password")
-    u3 = User.create(username: "Zane", email: "Zane@Music.com", password: "password")
+    u1 = User.create(username: "tkarssli", full_name: "Tamir Karssli", email: "Tamir@Karssli.com", password: "password")
+    u2 = User.create(username: "doro", full_name: "Dorotea Ciani", email: "Dorotea@Italy.com", password: "password")
+    u3 = User.create(username: "zkarssli", full_name: "Zane Karssli", email: "Zane@Music.com", password: "password")
+    u4 = User.create(username: "ari_design_master", full_name: "Ari Gachalapoilichaloop", email: "Ari@Gallapagos.com", password: "password", avatar: Faker::Avatar.unique.image)
 
     users = []
     (0..20).each do 
-        users.push(User.create(username: Faker::Name.unique.name, email: Faker::Internet.unique.email, password: "password"))
+        users.push(User.create(username: Faker::Internet.unique.username, full_name: Faker::Name.unique.name, avatar: Faker::Avatar.image, email: Faker::Internet.unique.email, password: "password"))
     end
 
     Post.destroy_all
