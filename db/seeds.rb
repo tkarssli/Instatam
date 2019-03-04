@@ -27,12 +27,17 @@ ActiveRecord::Base.transaction do
     end
 
     Post.destroy_all
-
+    posts = []
     (0...23).each do |n|
         filename = "seed#{n}"
         file = File.open("seed/#{filename}.jpg")
         user = users.sample
         post = Post.create(caption: Faker::Hipster.unique.sentence, user_id: user.id)
+        posts.push(post)
         post.photo.attach(io: file, filename: filename)
+    end
+
+    (0...100).each do 
+        Comment.create(body: Faker::Lorem.sentence, user_id: users.sample.id, post_id: posts.sample.id)
     end
 end
