@@ -10,7 +10,7 @@ import PostIndexItemModal from '../post/post_index_item_modal';
 class Modal extends React.Component {
 
     componentDidUpdate(){
-        const { scroll } = this.props
+        const { modal, scroll } = this.props
         const body = document.getElementsByTagName('body')[0]
 
         // Stop body from scrolling while modal is open
