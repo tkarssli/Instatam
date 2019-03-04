@@ -9,6 +9,7 @@ class PostIndex extends React.Component {
         super(props)
         this.state = { post: null}
         
+        
     }
 
     

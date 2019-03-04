@@ -29,3 +29,5 @@ export const userErrors = (errors) => ({
   type: USER_ERRORS,
   errors
 })
+
+window.fetchUser = fetchUser

@@ -56,9 +56,8 @@ class Navbar extends React.Component {
                                         </div>
 
                                         {/* <Link to="/">{currentUser.username}</Link> */}
-                                        <div onClick={this.handleLogout}>
-                                            <span className="profile-icon icon glyph"></span>
-                                        </div>
+                                        <Link to={`/${currentUser.id}`} className="profile-icon icon glyph">
+                                        </Link>
                                     </div>
                                 </>
                             ) : (

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import PostIndexItemModal from '../post/post_index_item_modal';
+import Settings from '../../components/profile/settings'
 // import LoginFormContainer from '../session_form/login_form_container';
 // import SignupFormContainer from '../session_form/signup_form_container';
 
@@ -33,7 +34,10 @@ class Modal extends React.Component {
 
             case 'post':
                 component = <PostIndexItemModal post={modal.item}/>;
+                break;
 
+            case 'settings':
+                component = <Settings />
                 break;
 
             default:
