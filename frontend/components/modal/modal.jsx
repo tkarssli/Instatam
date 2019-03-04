@@ -8,7 +8,7 @@ import PostIndexItemModal from '../post/post_index_item_modal';
 // import SignupFormContainer from '../session_form/signup_form_container';
 
 class Modal extends React.Component {
-    
+
     componentDidUpdate(){
         const { scroll } = this.props
         const body = document.getElementsByTagName('body')[0]
@@ -53,13 +53,14 @@ class Modal extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    scroll: state.ui.scroll
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
   };
 };
 

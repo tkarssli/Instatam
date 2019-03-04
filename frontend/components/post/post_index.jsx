@@ -35,7 +35,7 @@ class PostIndex extends React.Component {
         const { posts } = this.props
         return (
             <div className="post-index">
-            <Modal/>
+            <Modal />
                 {this.formatGrid(Object.values(posts))}
             </div>
             
