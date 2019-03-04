@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import PostIndex from './post_index';
-import { fetchPosts } from '../../actions/post_actions';
+import { fetchUserPosts } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
 import { receiveScroll } from '../../actions/scroll_actions'
 
-const mSP = state => ({
+const mSP = (state, ownProps )=> {
+    return {
     posts: state.entities.posts,
-    id: null
-})
+    id: ownProps.userId
+}}
 
 const mDP = dispatch => ({
-    fetchPosts: (id) => dispatch(fetchPosts()),
+    fetchPosts: (id) => dispatch(fetchUserPosts(id)),
     openModal: modal => {
         dispatch(receiveScroll(modal.scroll));
         dispatch(openModal(modal));

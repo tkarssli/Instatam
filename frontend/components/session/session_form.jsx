@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
     }
 
     handleDemoLogin(e) {
-        const demo_user = { username: "Demo User", password: "password", formType: 'login' }
+        const demo_user = { username: "demo_user", password: "password", formType: 'login' }
         this.setState({ username: "", password: "" })
         let c = 150
         let ms = 0

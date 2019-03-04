@@ -11,6 +11,10 @@ export const fetchPosts = () => dispatch => (
     APIUtil.fetchPosts()
         .then(posts => dispatch(receivePosts(posts)))
 )
+export const fetchUserPosts = (id) => dispatch => (
+    APIUtil.fetchUserPosts(id)
+        .then(posts => dispatch(receivePosts(posts)))
+)
 
 export const fetchPost = postId => dispatch => (
     APIUtil.fetchPosts(postId)

@@ -32,7 +32,7 @@ class Splash extends React.Component {
                                 {"/signup" === location.pathname ? (
                                         <p>Already have an account? <NavLink to="/login">Log in</NavLink></p>
                                     ) : (
-                                        <p>Dont't have an account? <NavLink to="/signup">Sign up</NavLink></p>
+                                        <p>Don't have an account? <NavLink to="/signup">Sign up</NavLink></p>
 
                                 )}
                             </div>
