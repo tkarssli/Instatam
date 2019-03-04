@@ -50,12 +50,12 @@ class Navbar extends React.Component {
                             {currentUser ? (
                                 <>
                                     <div className="nav-links-container">
-                                        {/* <span className="icon glyph"></span> */}
                                         <div>
                                             <span className="follows-icon icon glyph"></span>
                                         </div>
-
-                                        {/* <Link to="/">{currentUser.username}</Link> */}
+                                        <div>
+                                            <Link to="/upload" className="upload-icon icon glyph"></Link>
+                                        </div>
                                         <Link to={`/${currentUser.id}`} className="profile-icon icon glyph">
                                         </Link>
                                     </div>
