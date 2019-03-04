@@ -9,12 +9,14 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  full_name       :string           not null
+#  avatar          :string
 #
 
 class User < ApplicationRecord
     attr_reader :password
     validates :username, :email, :session_token, uniqueness: true, presence: true 
-    validates :password_digest, presence: true
+    validates :password_digest, :full_name, presence: true
     validates :password, length: {minimum: 8, allow_nil: true}
     after_initialize :ensure_session_token
 

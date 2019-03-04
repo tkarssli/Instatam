@@ -6,6 +6,11 @@ class Api::PostsController < ApplicationController
         render :index
     end
 
+    def user_posts
+        @posts = Post.with_attached_photo.all.where(user_id: params[:user_id])
+        render :index
+    end
+
     def show 
         @post = Post.with_attached_photo.find(params[:id])
         if @post
