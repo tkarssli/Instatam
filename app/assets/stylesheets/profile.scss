@@ -1,0 +1,13 @@
+.profile-user{
+    display: flex;
+    flex-direction: column;
+    div{
+        display: flex;
+    }
+    .settings-icon{
+        background-repeat: no-repeat;
+        background-position: -241px -130px;
+        height: 24px;
+        width: 24px;
+    }
+}
