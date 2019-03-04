@@ -25,6 +25,11 @@ body {
     background-color: #fafafa;
 }
 
+body{
+    overflow-y: scroll;
+
+}
+
 #root {
     display: flex;
     flex-direction: column;
