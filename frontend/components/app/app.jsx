@@ -10,6 +10,7 @@ import Footer from '../footer/footer'
 import PostIndexContainer from '../post/post_index_container';
 import ProfileContainer from '../profile/profile_container';
 import UploadPostFormContainer from '../post/upload_post_form_container';
+import EditPostFormContainer from '../post/edit_post_form_container';
 import PostContainer from '../post/post_container';
 
 const App = ({currentUser}) => (
@@ -22,7 +23,8 @@ const App = ({currentUser}) => (
                         
                             <Switch>
                                 <Route exact path="/" component={PostIndexContainer} />
-                                <Route path="/p/:postId" component={PostContainer} />
+                                <Route exact path="/p/:postId" component={PostContainer} />
+                                <Route path="/p/:postId/edit" component={EditPostFormContainer} />
                                 <Route path="/:userId(\d+)" component={ProfileContainer} />
                                 <Route path="/upload" component={UploadPostFormContainer} />
                                 <AuthRoute exact path="/login" component={LoginFormContainer}/>

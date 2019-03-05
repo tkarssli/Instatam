@@ -1,7 +1,7 @@
 import React from 'react';
 
+import SettingsModal from '../modal/settings_modal';
 import UserPostsIndexContainer from '../post/user_post_index_container';
-import Modal from '../modal/modal'
 
 class Profile extends React.Component {
     constructor(props) {
@@ -15,7 +15,6 @@ class Profile extends React.Component {
     }
 
     componentDidUpdate(){
-        // debugger
         if(!this.props.user || this.props.match.params.userId !== String(this.props.user.id)){
             this.props.fetchUser(this.props.match.params.userId)
         }
@@ -25,11 +24,11 @@ class Profile extends React.Component {
     }
 
     render() { 
-        const { user, currentUser, openModal } = this.props;
+        const { user, currentUser, openSettingsModal } = this.props;
         return (  
             this.props.user ? (
                 <>
-                    <Modal />
+                    <SettingsModal />
                     <div className="profile-user">
                         <div>
                             {user.avatar ? (
@@ -42,7 +41,7 @@ class Profile extends React.Component {
                         <section>
                             <div>
                                 <h1>{user.username}</h1>
-                                {String(currentUser) === this.props.match.params.userId ? (<div onClick={() => openModal({type: 'settings'})} className="settings-icon icon glyph"></div>) : (<div>Follow</div>)}
+                                {String(currentUser) === this.props.match.params.userId ? (<div onClick={() => openSettingsModal({type: 'profile'})} className="settings-icon icon glyph"></div>) : (<div>Follow</div>)}
                                 
                             </div>
                             <div>

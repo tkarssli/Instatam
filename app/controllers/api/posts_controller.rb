@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-    # before_action :require_login
+    before_action :require_login
 
     def index
         @posts = Post.with_attached_photo.all
@@ -24,7 +24,7 @@ class Api::PostsController < ApplicationController
         if params[:post][:photo].instance_of?(String) 
             return render json: ["Image Required"], status: 401
         end
-            resize_photo(params[:post][:photo])
+        resize_photo(params[:post][:photo])
 
         @post = Post.new(post_params)
         @post.user_id = current_user.id
@@ -38,12 +38,16 @@ class Api::PostsController < ApplicationController
     end
 
     def update 
-        if params[:post][:photo].instance_of?(String) 
-            return render json: ["Image Required"], status: 401
+        @post = Post.find_by(id: params[:id])
+        return render json: { message: "Must be owner of post to delete" }, status: 401 if current_user.id != @post.user_id
+        if params[:post][:photo]
+            if params[:post][:photo].instance_of?(String) 
+                return render json: ["Image Required"], status: 401
+            else
+                resize_photo(params[:post][:photo])
+            end
         end
-        resize_photo(params[:post][:photo])
 
-        @post = Post.find_by(params[:id])
         if @post.update_attributes(post_params)
             @post.save
             render :show, status: 201
@@ -53,11 +57,13 @@ class Api::PostsController < ApplicationController
     end
 
     def destroy 
-        if current_user 
-            render json: {}, status: 200
+        @post = Post.find_by(id: params[:id])
+        if current_user.id == post.user_id
+            @post.destroy
+            render :show, status: 200
         else 
             render json: {
-                message: "No user to log out",
+                message: "Must be owner of post to delete",
             },
             status: 401
         end

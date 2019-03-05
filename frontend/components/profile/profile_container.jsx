@@ -2,7 +2,7 @@ import Profile from "./profile";
 import {connect} from 'react-redux';
 import { logout } from '../../actions/session_actions'
 import { fetchUser } from "../../actions/user_actions";
-import { openModal } from "../../actions/modal_actions";
+import { openSettingsModal } from "../../actions/modal_actions";
 
 
 const mapStateToProps = (state, ownProps) => ({
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
     fetchUser: id => dispatch(fetchUser(id)),
-    openModal: modal => dispatch(openModal(modal))
+    openSettingsModal: modal => dispatch(openSettingsModal(modal))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

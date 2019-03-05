@@ -17,6 +17,7 @@ class PostContainer extends React.Component{
             this.props.fetchPost(this.props.match.params.postId)
         }
     }
+
     render () {
         const { post, users} = this.props;
         return (
@@ -41,7 +42,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
         // closeModal: () => dispatch(closeModal()),
         fetchPost: (id) => dispatch(fetchPost(id)),
-        fetchUser: (id) => dispatch(fetchUser(id))
+        fetchUser: (id) => dispatch(fetchUser(id)),
+        
     })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostContainer);

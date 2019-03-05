@@ -33,15 +33,24 @@ export const createPost = post => {
         processData: false
     })
 }
-export const updatePost = post => (
-    $.ajax({
-        method: "patch",
-        url: `/api/posts/${post.id}`,
-        data: {
-            post
-        }
+export const updatePost = ( form ) => {
+    const formData = new FormData();
+    if(form.caption){
+        formData.append('post[caption]', form.caption);
+    } 
+    if (form.imageFile) {
+        formData.append('post[photo]', form.imageFile);
+    }
+
+    return $.ajax({
+        method: "PATCH",
+        tpye: "PATCH",
+        url: `/api/posts/${form.post.id}`,
+        data: formData,
+        contentType: false,
+        processData: false
     })
-)
+}
 
 export const deletePost = id => (
     $.ajax({

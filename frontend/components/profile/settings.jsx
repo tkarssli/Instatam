@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
-import { closeModal } from '../../actions/modal_actions';
+import { closeSettingsModal } from '../../actions/modal_actions';
 
 
 class Settings extends React.Component{
@@ -12,7 +12,7 @@ class Settings extends React.Component{
     }
 
     handleLogout(e) {
-        this.props.closeModal();
+        this.props.closeSettingsModal();
         this.props.logout();
         this.props.history.push('/')
     }
@@ -23,7 +23,7 @@ class Settings extends React.Component{
                 <div className="profile-settings">
                     <ul>
                         <li onClick={this.handleLogout}>Log out</li>
-                        <li onClick={() => this.props.closeModal()}>Cancel</li>
+                        <li onClick={() => this.props.closeSettingsModal()}>Cancel</li>
                     </ul>
                 </div>
             </>
@@ -32,11 +32,11 @@ class Settings extends React.Component{
 }
 
 const mapStateToProps = state => ({
-        modal: state.ui.modal,
+        modal: state.ui.modal.settings,
     })
 
 const mapDispatchToProps = dispatch => ({
-        closeModal: () => dispatch(closeModal()),
+        closeSettingsModal: () => dispatch(closeSettingsModal()),
         logout: () => dispatch(logout())
     })
   

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import PostIndex from './post_index';
 import { fetchUserPosts } from '../../actions/post_actions';
-import { openModal } from '../../actions/modal_actions';
+import { openPostModal } from '../../actions/modal_actions';
 import { receiveScroll } from '../../actions/scroll_actions'
 
 const mSP = (state, ownProps )=> {
@@ -12,9 +12,9 @@ const mSP = (state, ownProps )=> {
 
 const mDP = dispatch => ({
     fetchPosts: (id) => dispatch(fetchUserPosts(id)),
-    openModal: modal => {
+    openPostModal: modal => {
         dispatch(receiveScroll(modal.scroll));
-        dispatch(openModal(modal));
+        dispatch(openPostModal(modal));
     }
 })
 

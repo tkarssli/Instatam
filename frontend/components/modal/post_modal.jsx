@@ -1,21 +1,19 @@
 import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
+import { closePostModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import PostIndexItemModal from '../post/post_index_item_modal';
-import Settings from '../../components/profile/settings'
-// import LoginFormContainer from '../session_form/login_form_container';
-// import SignupFormContainer from '../session_form/signup_form_container';
 
-class Modal extends React.Component {
+class PostModal extends React.Component {
 
     componentDidUpdate(){
-        const { modal, scroll } = this.props
+        
+        const { postModal, scroll } = this.props
         const body = document.getElementsByTagName('body')[0]
 
         // Stop body from scrolling while modal is open
-        if (modal.type) {
+        if (postModal.type) {
             body.style.top = `-${scroll}px`
             body.classList.add('no-scroll')
         } else {
@@ -25,27 +23,24 @@ class Modal extends React.Component {
     }
 
     render () {
-        const { modal, closeModal} = this.props
-        if (!modal.type) {
+
+        const { postModal, closePostModal} = this.props
+        if (!postModal.type) {
             return null;
         }
         let component;
-        switch (modal.type) {
+        switch (postModal.type) {
 
             case 'post':
-                component = <PostIndexItemModal post={modal.item}/>;
-                break;
-
-            case 'settings':
-                component = <Settings />
+                component = <PostIndexItemModal post={postModal.item}/>;
                 break;
 
             default:
                 return null;
         }
         return (
-            <div id="modal" className="modal-background" onClick={closeModal}>
-            <div className="modal-button"/>
+            <div id="modal" className="modal-background" onClick={closePostModal}>
+            {/* <div className="modal-button"/> */}
             <div className="modal-child" onClick={e => e.stopPropagation()}>
                 { component }
             </div>
@@ -57,15 +52,15 @@ class Modal extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal,
+    postModal: state.ui.modal.post,
     scroll: state.ui.scroll
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal()),
+    closePostModal: () => dispatch(closePostModal()),
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostModal));

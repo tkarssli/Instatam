@@ -15,8 +15,6 @@ export const fetchUser = id => dispatch => (
     ))
 );
 
-
-
 // User actions
 export const receiveUser = user => ({
   type: RECEIVE_USER,

@@ -2,39 +2,57 @@ import * as APIUtil from '../util/post_api_util';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
 export const REMOVE_POST = 'REMOVE_POST';
-export const POST_ERRORS = 'POST_ERROR'
+export const POST_ERRORS = 'POST_ERRORS'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 // Session Thunks
 
 export const fetchPosts = () => dispatch => (
     APIUtil.fetchPosts()
-        .then(posts => dispatch(receivePosts(posts)))
+        .then(posts => dispatch(receivePosts(posts)),
+        err => (
+            dispatch(postError(err.responseJSON))
+        ))
 )
 export const fetchUserPosts = (id) => dispatch => (
     APIUtil.fetchUserPosts(id)
-        .then(posts => dispatch(receivePosts(posts)))
+        .then(posts => dispatch(receivePosts(posts)),
+        err => (
+            dispatch(postError(err.responseJSON))
+        ))
 )
 
 export const fetchPost = postId => dispatch => (
     APIUtil.fetchPost(postId)
-        .then(post => dispatch(receivePost(post)))
+        .then(post => dispatch(receivePost(post)),
+        err => (
+            dispatch(postError(err.responseJSON))
+        ))
 )
 
 export const createPost = post => dipatch => (
     APIUtil.createPost(post)
-        .then( post => dipatch(receivePost(post)))
+        .then( post => dipatch(receivePost(post)),
+        err => (
+            dispatch(postError(err.responseJSON))
+        ))
 
 )
 export const updatePost = post => dipatch =>(
     APIUtil.updatePost(post)
-        .then(post => dispatch(receivePost(post)))
+        .then(post => dispatch(receivePost(post)),
+        err => (
+            dispatch(postError(err.responseJSON))
+        ))
 
 )
 
 export const deletePost = postId => dipatch => (
     APIUtil.deletePost(postId)
-        .then(post=> dispatch(removePost(postId)))
+        .then(post=> dispatch(removePost(postId)),
+        err => (
+            dispatch(postError(err.responseJSON))
+        ))
 )
 
 
@@ -57,9 +75,9 @@ export const removePost = postId => ({
 
 // Error actions
 
-export const postError = error => ({
+export const postError = errors => ({
     type: POST_ERRORS,
-    error
+    errors
 })
 
 export const clearErrors = (errors) => ({

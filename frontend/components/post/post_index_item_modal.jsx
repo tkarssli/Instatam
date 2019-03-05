@@ -10,20 +10,25 @@ class PostIndexItemModal extends React.Component{
         this.props.fetchUser(this.props.post.userId)
     }
     render () {
-        const { post } = this.props;
+        const { post, users} = this.props;
         return (
-            <Post post={ post } />
+            <>
+             <Post post={post} user={users[post.userId]} />
+            </>
         )
     }
 }
 
 const mapStateToProps = state => ({
-        modal: state.ui.modal,
+        modal: state.ui.modal.post,
+        users: state.entities.users
     })
 
 const mapDispatchToProps = dispatch => ({
-        closeModal: () => dispatch(closeModal()),
-        fetchUser: (userId) => dispatch(fetchUser(userId))
+        // closeModal: () => dispatch(closeModal()),
+        fetchUser: (userId) => dispatch(fetchUser(userId)),
+        // openModal: modal => dispatch(openModal(modal))
+
     })
   
 export default connect(mapStateToProps, mapDispatchToProps)(PostIndexItemModal);

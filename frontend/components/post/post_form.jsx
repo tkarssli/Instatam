@@ -21,7 +21,6 @@ class PostForm extends React.Component {
         const post = Object.assign({}, this.state)
         this.props.action(post)
             .then((res) => {
-                debugger
                 this.props.history.push(`/p/${res.post.id}`)})
     }
 
