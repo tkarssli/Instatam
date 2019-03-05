@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import { fetchUser } from '../../actions/user_actions';
+import Post from './post'
+
+import { fetchUser } from '../../actions/user_actions';4
 
 class PostIndexItemModal extends React.Component{
     componentDidMount() {
@@ -10,16 +12,7 @@ class PostIndexItemModal extends React.Component{
     render () {
         const { post } = this.props;
         return (
-            <article className="post-index post-detail">
-                <header></header>
-                <div className="image-container">
-                    <img src={post.photoUrl} alt={post.caption}/>
-                </div>
-                <div className="post-comments">
-                    {/* <Comments /> */}
-                </div>
-                <div className="hamburger"></div>
-            </article>
+            <Post post={ post } />
         )
     }
 }

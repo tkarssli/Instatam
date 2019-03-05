@@ -15,7 +15,7 @@ export default (oldState, action) => {
             return action.posts;
         
         case RECEIVE_POST:
-            state[action.post.id] = action.post.id;
+            state[action.post.id] = action.post;
             return state;
 
         default:

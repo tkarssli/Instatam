@@ -17,7 +17,7 @@ export const fetchUserPosts = (id) => dispatch => (
 )
 
 export const fetchPost = postId => dispatch => (
-    APIUtil.fetchPosts(postId)
+    APIUtil.fetchPost(postId)
         .then(post => dispatch(receivePost(post)))
 )
 
@@ -67,4 +67,4 @@ export const clearErrors = (errors) => ({
     errors
 })
 
-window.fetchPosts = fetchPosts
+window.fetchPost = fetchPost

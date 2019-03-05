@@ -19,15 +19,20 @@ export const fetchPost = id => (
     })
 )
 
-export const createPost = post => (
-    $.ajax({
+export const createPost = post => {
+    const formData = new FormData();
+    formData.append('post[caption]', post.caption);
+    formData.append('post[photo]', post.imageFile);
+
+    return $.ajax({
         method: "POST",
+        tpye: "POST",
         url: `/api/posts`,
-        data: {
-            post
-        }
+        data: formData,
+        contentType: false,
+        processData: false
     })
-)
+}
 export const updatePost = post => (
     $.ajax({
         method: "patch",

@@ -8,7 +8,9 @@ import SplashContainer from '../splash/splash_container'
 import PageNotFoundContainer from '../page_not_found_container'
 import Footer from '../footer/footer'
 import PostIndexContainer from '../post/post_index_container';
-import ProfileContainer from '../profile/profile_container'
+import ProfileContainer from '../profile/profile_container';
+import UploadPostFormContainer from '../post/upload_post_form_container';
+import PostContainer from '../post/post_container';
 
 const App = ({currentUser}) => (
         <HashRouter>
@@ -20,7 +22,9 @@ const App = ({currentUser}) => (
                         
                             <Switch>
                                 <Route exact path="/" component={PostIndexContainer} />
-                                <Route path="/:userId(\d+)" component={ProfileContainer}/>
+                                <Route path="/p/:postId" component={PostContainer} />
+                                <Route path="/:userId(\d+)" component={ProfileContainer} />
+                                <Route path="/upload" component={UploadPostFormContainer} />
                                 <AuthRoute exact path="/login" component={LoginFormContainer}/>
                                 <AuthRoute exact path="/signup" component={SignupFormContainer}/>
                                 <Route component={PageNotFoundContainer} />

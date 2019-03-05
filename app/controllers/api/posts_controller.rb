@@ -21,7 +21,13 @@ class Api::PostsController < ApplicationController
     end
 
     def create 
+        if params[:post][:photo].instance_of?(String) 
+            return render json: ["Image Required"], status: 401
+        end
+            resize_photo(params[:post][:photo])
+
         @post = Post.new(post_params)
+        @post.user_id = current_user.id
 
         if @post.save
             render :show, status: 201
@@ -32,8 +38,12 @@ class Api::PostsController < ApplicationController
     end
 
     def update 
-        @post = Post.find_by(params[:id])
+        if params[:post][:photo].instance_of?(String) 
+            return render json: ["Image Required"], status: 401
+        end
+        resize_photo(params[:post][:photo])
 
+        @post = Post.find_by(params[:id])
         if @post.update_attributes(post_params)
             @post.save
             render :show, status: 201
@@ -55,7 +65,13 @@ class Api::PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:caption, :user_id)
+        params.require(:post).permit(:caption, :user_id, :photo)
+    end
+
+    def resize_photo(photo)
+        file = photo.open
+        new_image = MiniMagick::Image.new(file.path)
+        new_image.resize "600x600>"
     end
 
 end

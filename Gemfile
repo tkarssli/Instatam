@@ -31,6 +31,8 @@ gem 'aws-sdk-s3', require: false
 
 gem 'faker'
 
+gem "mini_magick"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

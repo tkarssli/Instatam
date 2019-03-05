@@ -4,10 +4,6 @@
     flex-direction: column;
 
     margin-top: 16px;
-
-
-
-    
 }
 
 .post-detail {
@@ -15,7 +11,6 @@
     flex-wrap: nowrap;
     flex-direction: row;
     background: white;
-    min-width: 815px;
 
     .post-comments {
         width: 335px;
@@ -28,16 +23,13 @@
     }
 }
 
-
-
-
 .index-row{
     display: flex;
     margin-bottom: 28px;
 
 }
 
-.post {
+.post-index-item{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -62,7 +54,6 @@
     .post-hover:hover {
         background:rgba(0, 0, 0, 0.3);
     }
-
 }
 
 .post:nth-last-of-type(1){
