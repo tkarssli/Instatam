@@ -8,8 +8,7 @@ import { updatePost } from '../../actions/post_actions';
 
 
 
-function EditPostFormContainer({ image, currUserId }) {
-    debugger
+function EditPostFormContainer({ image, currUserId, action }) {
     const isPostOwner = () =>{
         if(image.post.userId !== currUserId){
            return <Redirect to="/"/>
@@ -18,7 +17,7 @@ function EditPostFormContainer({ image, currUserId }) {
     return(
         <>
             {isPostOwner()}
-            <PostForm image={image} />
+            <PostForm image={image} action={action} />
 
             
         </>

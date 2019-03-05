@@ -12,20 +12,6 @@ import PostSettings from '../post/post_settings';
 
 class SettingsModal extends React.Component {
 
-    // componentDidUpdate(){
-    //     const { modal, scroll } = this.props
-    //     const body = document.getElementsByTagName('body')[0]
-
-    //     // Stop body from scrolling while modal is open
-    //     if (modal.type) {
-    //         body.style.top = `-${scroll}px`
-    //         body.classList.add('no-scroll')
-    //     } else {
-    //         body.classList.remove('no-scroll')
-    //         document.documentElement.scrollTop = scroll;
-    //     }
-    // }
-
     render () {
         const { settingsModal, closeSettingsModal} = this.props
         if (!settingsModal.type) {

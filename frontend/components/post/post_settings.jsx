@@ -10,6 +10,7 @@ import { closeSettingsModal, clearModals } from '../../actions/modal_actions';
 function PostSettings({ modal, currUserId , clearModals}) {
     const handleClick = () => {
         clearModals()
+        body.classList.remove('no-scroll')
     }
         return (
             <>
