@@ -15,6 +15,7 @@ class PostIndex extends React.Component {
         if(this.props.match.params.userId !== prevProps.match.params.userId){
             this.props.action(this.props.match.params.userId)
         }
+        
     }
 
     componentDidMount() {

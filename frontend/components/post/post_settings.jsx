@@ -8,7 +8,7 @@ import { closeSettingsModal, clearModals } from '../../actions/modal_actions';
 import { deletePost } from '../../actions/post_actions';
 
 
-function PostSettings({ modal, currUserId , clearModals, deletePost}) {
+function PostSettings({ modal, currUserId , clearModals, deletePost, closeSettingsModal}) {
     const handleClick = () => {
         clearModals()
         body.classList.remove('no-scroll')
@@ -33,7 +33,7 @@ function PostSettings({ modal, currUserId , clearModals, deletePost}) {
                                 </li>
                             </>
                         )}
-                        <li onClick={() => this.props.closeSettingsModal()}>
+                        <li onClick={() => closeSettingsModal()}>
                             Cancel
                         </li>
                         

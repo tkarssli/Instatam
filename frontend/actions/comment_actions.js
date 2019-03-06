@@ -79,5 +79,3 @@ export const clearErrors = (errors) => ({
     type: CLEAR_ERRORS,
     errors
 })
-
-window.fetchComments = fetchComments
