@@ -33,9 +33,6 @@ function PostSettings({ modal, currUserId , clearModals, deletePost}) {
                                 </li>
                             </>
                         )}
-                        <li>
-                            <div>Test row two</div>
-                        </li>
                         <li onClick={() => this.props.closeSettingsModal()}>
                             Cancel
                         </li>
