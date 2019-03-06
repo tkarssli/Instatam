@@ -16,6 +16,11 @@ export default (oldState, action) => {
             state[action.post.id] = action.post;
             return state;
 
+        case REMOVE_POST:
+            delete state[action.postId]
+            return state;
+
+
         default:
             return state;
     }

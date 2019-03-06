@@ -26,7 +26,7 @@ export const createPost = post => {
 
     return $.ajax({
         method: "POST",
-        tpye: "POST",
+        type: "POST",
         url: `/api/posts`,
         data: formData,
         contentType: false,
@@ -44,7 +44,7 @@ export const updatePost = ( form ) => {
 
     return $.ajax({
         method: "PATCH",
-        tpye: "PATCH",
+        type: "PATCH",
         url: `/api/posts/${form.post.id}`,
         data: formData,
         contentType: false,

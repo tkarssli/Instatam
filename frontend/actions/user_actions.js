@@ -1,6 +1,7 @@
 import * as APIUtil from '../util/user_api_util';
 
 export const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_USERS = "RECEIVE_USERS";
 export const USER_ERRORS = "USER_ERRORS"
 
 
@@ -19,6 +20,11 @@ export const fetchUser = id => dispatch => (
 export const receiveUser = user => ({
   type: RECEIVE_USER,
   user
+})
+
+export const receiveUsers = users => ({
+  type: RECEIVE_USERS,
+  users
 })
 
 // Error actions
