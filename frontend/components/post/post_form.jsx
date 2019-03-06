@@ -46,6 +46,8 @@ class PostForm extends React.Component {
                         <img src={this.state.imageUrl}/>
                         <label htmlFor="input" className="btn"> Choose File</label>
                         <input id="input" onChange={this.handleImage} type="file"/>
+                        <input type="submit" className="btn" value={this.props.image.formType}/>
+
                     </div>
                     <div className="caption-input">
                         <input placeholder="Enter a Caption" type="text" onChange={this.update('caption')} value={this.state.caption} />
@@ -54,7 +56,6 @@ class PostForm extends React.Component {
                     </ul>
                     </div>
                 </div>
-                    <input type="submit" className="btn" value={this.props.image.formType}/>
                 </form>
             </div>
           );
