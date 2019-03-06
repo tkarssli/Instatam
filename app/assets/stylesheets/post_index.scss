@@ -28,17 +28,54 @@
     width: 293px;
     overflow: hidden;
 
+
+
     .post-hover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+
         position: absolute;
         cursor: pointer;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
+
+        .comment-count {
+            display: flex;
+            background-repeat: no-repeat;
+            background-position: -246px -399px;
+            height: 19px;
+            width: 19px;
+        }
+
+        &>div {
+            display: flex;
+            visibility: hidden;
+            margin-right: 30px;
+
+            &>span{
+                margin-right: 7px;
+
+                &:nth-last-of-type(1){
+                    margin: 0;
+                }
+            }
+            
+            &:nth-last-of-type(1){
+                margin-right: 0;
+            }
+        }
     }
 
     .post-hover:hover {
         background:rgba(0, 0, 0, 0.3);
+
+        &>div {
+            visibility: visible
+        }
     }
 }
 
