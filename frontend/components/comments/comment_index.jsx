@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchComments, createComment } from '../../actions/comment_actions';
+import { fetchComments, createComment, deleteComment } from '../../actions/comment_actions';
 import { clearModals } from '../../actions/modal_actions'
 
 
@@ -35,12 +35,19 @@ class CommentIndex extends React.Component {
       }
 
     render() { 
-        const { comments, users, clearModals, currUserId} = this.props
+        const { comments, users, clearModals, currUserId, deleteComment} = this.props
         return (
             comments ? (
                 <>
                     <div className="comment-feed">
-                        {comments.map(comment => (<CommentIndexItem currUserId={currUserId}comment={comment} key={comment.id} user={users[comment.userId]} clearModals={clearModals} />))}
+                        {comments.map(comment => (
+                            <CommentIndexItem 
+                                currUserId={currUserId}
+                                comment={comment} key={comment.id} 
+                                user={users[comment.userId]} 
+                                clearModals={clearModals} 
+                                deleteComment={deleteComment}
+                            />))}
                     </div>
                     <form >
                         <textarea onKeyDown={this.onEnterPress} placeholder="Add a comment..." onChange={(e)=> this.setState({body: e.target.value})} value={this.state.body}/>
@@ -62,6 +69,7 @@ const mSP = (state, ownProps) => ({
 const mDP = dispatch => ({
     createComment: comment => dispatch(createComment(comment)),
     fetchComments: postId => dispatch(fetchComments(postId)),
+    deleteComment: commentId => dispatch(deleteComment(commentId)),
     clearModals: () => dispatch(clearModals()),
     // openSettingsModal: modal => dispatch(openSettingsModal(modal))
 })

@@ -73,9 +73,34 @@
             margin-bottom: 10px;
             order: 1;
             border-bottom: 1px solid #efefef;
-        }
 
-        
+
+        }
+        .comment-row {
+            position: relative;
+            padding-right: 36px;
+
+            .close-icon{
+                position: absolute;
+                right: 9px;
+                top: 0px;
+                padding: 4px;
+
+
+                border: 0;
+                border-radius: 6px;
+
+                &>div{
+                    background-position: -86px -62px;
+                    width: 9px;
+                    height: 9px;
+                }
+            }
+
+            .close-icon:active {
+                background-color: #efefef;
+            }
+        }
 
         form {
             order: 3;
@@ -153,14 +178,16 @@
         }
     
         .image-container {
-            background: black;
             display: flex;
+            justify-content: center;
             margin-right: 335px;
             position: relative;
-            min-height: 450px;
+            min-height: 400px;
+            min-width: 300px;
+            background: black;
     
             img {
-                object-fit: cover;
+                object-fit: contain;
             }
         }
     }
