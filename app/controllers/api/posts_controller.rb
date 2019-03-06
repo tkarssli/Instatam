@@ -77,7 +77,7 @@ class Api::PostsController < ApplicationController
     def resize_photo(photo)
         file = photo.open
         new_image = MiniMagick::Image.new(file.path)
-        new_image.resize "600x600>"
+        new_image.resize "600x600"
     end
 
 end

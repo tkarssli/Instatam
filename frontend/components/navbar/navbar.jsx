@@ -39,7 +39,7 @@ class Navbar extends React.Component {
                     <div className="navbar-container">
                         <nav className={this.state.navClass}>
                             <Link to="/" className="nav-logo">
-                                <div className="sprite icon"></div>
+                                <div className="logo icon"></div>
                                 <div className={this.state.fadeClass}>
                                     <div className="pipe icon"></div>
                                     <div className="callig-container">
