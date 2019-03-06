@@ -47,7 +47,7 @@ export const updatePost = post => dipatch =>(
 
 )
 
-export const deletePost = postId => dipatch => (
+export const deletePost = postId => dispatch => (
     APIUtil.deletePost(postId)
         .then(post=> dispatch(removePost(postId)),
         err => (

@@ -58,7 +58,7 @@ class Api::PostsController < ApplicationController
 
     def destroy 
         @post = Post.find_by(id: params[:id])
-        if current_user.id == post.user_id
+        if current_user.id == @post.user_id
             @post.destroy
             render :show, status: 200
         else 

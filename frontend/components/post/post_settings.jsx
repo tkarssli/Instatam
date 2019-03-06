@@ -5,28 +5,41 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { logout } from '../../actions/session_actions';
 import { closeSettingsModal, clearModals } from '../../actions/modal_actions';
+import { deletePost } from '../../actions/post_actions';
 
 
-function PostSettings({ modal, currUserId , clearModals}) {
+function PostSettings({ modal, currUserId , clearModals, deletePost}) {
     const handleClick = () => {
         clearModals()
         body.classList.remove('no-scroll')
     }
+
+    const handleDelete = () => {
+        deletePost(modal.post.id)
+        .then(clearModals())
+    }
+    
         return (
             <>
                 <div className="settings">
                     <ul>
-                        <li>
-                            <div>Test row one</div>
-                        </li>
+                        {currUserId !== modal.post.userId ? (""):(
+                            <>
+                                <li onClick={handleDelete}>
+                                    <span className="danger-text">Delete Post</span>
+                                </li>
+                                <li>
+                                    <Link to={`/p/${modal.post.id}/edit`} onClick={handleClick}>Edit</Link>
+                                </li>
+                            </>
+                        )}
                         <li>
                             <div>Test row two</div>
                         </li>
-                        <li>
-                            <div>Test row three</div>
+                        <li onClick={() => this.props.closeSettingsModal()}>
+                            Cancel
                         </li>
                         
-                        {modal.post.userId === currUserId ? ( <Link to={`/p/${modal.post.id}/edit`} onClick={handleClick}>Edit</Link>) : ("")}
                        
                         {/* <li onClick={() => this.props.closeSettingsModal()}>Cancel</li> */}
                     </ul>
@@ -42,8 +55,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
         closeSettingsModal: () => dispatch(closeSettingsModal()),
-        clearModals: () => dispatch(clearModals())
-        // logout: () => dispatch(logout())
+        clearModals: () => dispatch(clearModals()),
+        deletePost: postId => dispatch(deletePost(postId))
     })
   
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostSettings));
