@@ -11,7 +11,7 @@ const mSP = (state, ownProps )=> {
 }}
 
 const mDP = dispatch => ({
-    fetchPosts: (id) => dispatch(fetchUserPosts(id)),
+    action: (id) => dispatch(fetchUserPosts(id)),
     openPostModal: modal => {
         dispatch(receiveScroll(modal.scroll));
         dispatch(openPostModal(modal));

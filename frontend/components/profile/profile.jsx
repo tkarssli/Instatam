@@ -12,10 +12,11 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.fetchUser(this.props.match.params.userId)
+            .fail(res => this.props.history.push('/'))
     }
 
-    componentDidUpdate(){
-        if(!this.props.user || this.props.match.params.userId !== String(this.props.user.id)){
+    componentDidUpdate(prevProps){
+        if(this.props.match.params.userId !== prevProps.match.params.userId){
             this.props.fetchUser(this.props.match.params.userId)
         }
         // }else{

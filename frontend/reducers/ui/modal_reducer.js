@@ -9,7 +9,6 @@ import {
 export default function modalReducer(oldState = {post: {}, settings: {}}, action) {
     Object.freeze(oldState)
     let state = Object.assign({}, oldState)
-    console.log(action)
     switch (action.type) {
         
         case OPEN_POST_MODAL:

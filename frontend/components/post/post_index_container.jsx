@@ -10,7 +10,7 @@ const mSP = state => ({
 })
 
 const mDP = dispatch => ({
-    fetchPosts: (id) => dispatch(fetchPosts()),
+    action: (id) => dispatch(fetchPosts()),
     openPostModal: modal => {
         dispatch(receiveScroll(modal.scroll));
         dispatch(openPostModal(modal));

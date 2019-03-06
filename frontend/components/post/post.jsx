@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { clearModals, openSettingsModal } from '../../actions/modal_actions';
 
+import CommentsIndex from '../comments/comment_index'
+
 const Post = ({ post, user, clearModals, openSettingsModal }) => {
     const handleClick= (e) => {
         clearModals()
@@ -17,7 +19,6 @@ const Post = ({ post, user, clearModals, openSettingsModal }) => {
            
             <div className="image-container">
                 <img src={post.photoUrl} alt={post.caption}/>
-                <Link onClick={handleClick} to={`/p/${post.id}/edit`}>Edit</Link>
             </div>
             <div className="post-aside">
                 { user ? (
@@ -26,10 +27,10 @@ const Post = ({ post, user, clearModals, openSettingsModal }) => {
                         <div><Link onClick={handleClick} to={`/${user.id}`}>{user.username}</Link></div>
                     </header>
                 ):("")}
-                    <div onClick={openSettings} >settings</div>
+                    <a onClick={openSettings} >settings</a>
                 <p>{post.caption}</p>
                 <div className="post-comments">
-                    {/* <Comments /> */}
+                    <CommentsIndex postId={post.id} />
                 </div>
             </div>
             <div className="hamburger"></div>

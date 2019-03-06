@@ -1,0 +1,20 @@
+.post-detail {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    background: white;
+
+    .post-aside {
+        width: 335px;
+
+    }
+
+    .image-container {
+        background: black;
+        display: flex;
+
+        img {
+            object-fit: contain;
+        }
+    }
+}
