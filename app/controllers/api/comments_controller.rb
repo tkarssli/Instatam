@@ -10,12 +10,13 @@ class Api::CommentsController < ApplicationController
     end
 
     def index 
-        @comments = Comment.all.where(post_id: params[:post_id])
+        @comments = Comment.all.where(post_id: params[:post_id]).includes(:user)
         render :index
     end
 
     def create 
         @comment = Comment.new(comment_params)
+        @comment.user_id = current_user.id
         if @comment.save
             render :show, status: 201
         else
