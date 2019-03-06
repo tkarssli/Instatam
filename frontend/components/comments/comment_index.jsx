@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { fetchComments, createComment } from '../../actions/comment_actions';
 import { clearModals } from '../../actions/modal_actions'
 
@@ -15,30 +14,39 @@ class CommentIndex extends React.Component {
 
         this.state = {body: "", post_id: this.props.postId}
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onEnterPress = this.onEnterPress.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchComments(this.props.postId)
     }
 
-    handleSubmit(e) {
-        e.preventDefault()
+    handleSubmit() {
+        // e.preventDefault()
         this.setState({body: ""})
         this.props.createComment(this.state)
     }
+
+    onEnterPress(e){
+        if(e.keyCode == 13 && e.shiftKey == false) {
+            e.preventDefault();
+            this.handleSubmit()
+        }
+      }
+
     render() { 
         const { comments, users, clearModals, currUserId} = this.props
         return (
             comments ? (
-                <div className="comment-index">
+                <>
                     <div className="comment-feed">
                         {comments.map(comment => (<CommentIndexItem currUserId={currUserId}comment={comment} key={comment.id} user={users[comment.userId]} clearModals={clearModals} />))}
                     </div>
-                    <form onSubmit={this.handleSubmit}>
-                        <input type="text" onChange={(e)=> this.setState({body: e.target.value})} value={this.state.body}/>
-                        <input type="submit"/>
+                    <form >
+                        <textarea onKeyDown={this.onEnterPress} placeholder="Add a comment..." onChange={(e)=> this.setState({body: e.target.value})} value={this.state.body}/>
+                        <input type="submit" value=""></input>
                     </form>
-                </div>
+                </>
 
             ) : ("")
           );

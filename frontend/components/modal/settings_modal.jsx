@@ -18,7 +18,6 @@ class SettingsModal extends React.Component {
             return null;
         }
         let component;
-        // debugger
         switch (settingsModal.type) {
             case 'profile':
                 component = <ProfileSettings />

@@ -12,9 +12,10 @@ class PostContainer extends React.Component{
             .then(()=> this.props.fetchUser(this.props.post.userId))
     }
 
-    componentDidUpdate(){
-        if(!this.props.post || this.props.match.params.postId !== String(this.props.post.id)){
+    componentDidUpdate(prevProps){
+        if(this.props.match.params.postId !== prevProps.match.params.postId){
             this.props.fetchPost(this.props.match.params.postId)
+            .then(({ post }) => {this.props.fetchUser(post.userId)})
         }
     }
 

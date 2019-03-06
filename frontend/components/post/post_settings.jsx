@@ -14,7 +14,7 @@ function PostSettings({ modal, currUserId , clearModals}) {
     }
         return (
             <>
-                <div className="settings-modal post-settings">
+                <div className="post-settings">
                     <ul>
                         <div>Test</div>
                         {modal.post.userId === currUserId ? ( <Link to={`/p/${modal.post.id}/edit`} onClick={handleClick}>Edit</Link>) : ("")}

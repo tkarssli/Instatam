@@ -11,29 +11,37 @@ const Post = ({ post, user, clearModals, openSettingsModal }) => {
         clearModals()
     }
 
+
     const openSettings = (e) => {
         openSettingsModal({type: 'post', post})
     }
     return (
-        <article className="post-index post-detail">
+        <article className="post post-detail">
            
             <div className="image-container">
                 <img src={post.photoUrl} alt={post.caption}/>
             </div>
-            <div className="post-aside">
-                { user ? (
-                    <header>
+            { user ? (
+            <header className="avatar">
+                {user.avatar ? (
                         <img src={user.avatar}/>
-                        <div><Link onClick={handleClick} to={`/${user.id}`}>{user.username}</Link></div>
-                    </header>
-                ):("")}
-                    <a onClick={openSettings} >settings</a>
-                <p>{post.caption}</p>
-                <div className="post-comments">
-                    <CommentsIndex postId={post.id} />
+                    ):(
+                        <img src="/assets/default_avatar.svg"/>
+
+                    )}
+                <div>
+                    <Link onClick={handleClick} to={`/${user.id}`}>{user.username}</Link>
+                    {/* <span>•</span> */}
                 </div>
+            </header>
+                ):("")}
+            <div className="comment-index">
+                <p>{post.caption}</p>
+                <CommentsIndex postId={post.id} />
             </div>
-            <div className="hamburger"></div>
+            <div className="hamburger">
+                <div onClick={openSettings} className="icon glyph"></div>
+            </div>
         </article>
     )
 }

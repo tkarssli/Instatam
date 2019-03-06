@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import SettingsModal from '../modal/settings_modal';
 import UserPostsIndexContainer from '../post/user_post_index_container';
@@ -6,25 +7,26 @@ import UserPostsIndexContainer from '../post/user_post_index_container';
 class Profile extends React.Component {
     constructor(props) {
         super(props)
-
-        // this.state={username: "",}
     }
 
     componentDidMount() {
         this.props.fetchUser(this.props.match.params.userId)
-            .fail(res => this.props.history.push('/'))
+        .fail(res => this.props.history.push('/'))
     }
 
     componentDidUpdate(prevProps){
         if(this.props.match.params.userId !== prevProps.match.params.userId){
             this.props.fetchUser(this.props.match.params.userId)
+            this.props.clearScroll()
+
         }
-        // }else{
-        //     this.props.fetchUser(this.props.match.params.userId)
-        // }
+
     }
 
+
     render() { 
+        document.documentElement.scrollTop = 0;
+
         const { user, currentUser, openSettingsModal } = this.props;
         return (  
             this.props.user ? (
