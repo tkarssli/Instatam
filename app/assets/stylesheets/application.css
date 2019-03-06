@@ -47,6 +47,7 @@ section.main-content {
     display: flex;
     flex-direction: column;
     margin-top: 77px;
+    flex-grow: 1;
 }
 
 a {

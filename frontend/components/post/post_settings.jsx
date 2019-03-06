@@ -11,7 +11,7 @@ import { deletePost } from '../../actions/post_actions';
 function PostSettings({ modal, currUserId , clearModals, deletePost, closeSettingsModal}) {
     const handleClick = () => {
         clearModals()
-        body.classList.remove('no-scroll')
+        // body.classList.remove('no-scroll')
     }
 
     const handleDelete = () => {
@@ -28,9 +28,7 @@ function PostSettings({ modal, currUserId , clearModals, deletePost, closeSettin
                                 <li onClick={handleDelete}>
                                     <span className="danger-text">Delete Post</span>
                                 </li>
-                                <li>
-                                    <Link to={`/p/${modal.post.id}/edit`} onClick={handleClick}>Edit</Link>
-                                </li>
+                                    <Link to={`/p/${modal.post.id}/edit`} onClick={handleClick} >Edit</Link>
                             </>
                         )}
                         <li onClick={() => closeSettingsModal()}>

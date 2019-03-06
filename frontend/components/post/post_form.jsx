@@ -37,13 +37,26 @@ class PostForm extends React.Component {
 
     }
     render() { 
+        const { errors } = this.props;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <img src={this.state.imageUrl}/>
-                <input onChange={this.handleImage} type="file"/>
-                Caption: <input type="text" onChange={this.update('caption')} value={this.state.caption} />
-                <input type="submit" className="btn" value={this.props.image.formType}/>
-            </form>
+            <div className="post-form">
+                <form onSubmit={this.handleSubmit}>
+                <div>
+                    <div className="image-input">
+                        <img src={this.state.imageUrl}/>
+                        <label htmlFor="input" className="btn"> Choose File</label>
+                        <input id="input" onChange={this.handleImage} type="file"/>
+                    </div>
+                    <div className="caption-input">
+                        <input placeholder="Enter a Caption" type="text" onChange={this.update('caption')} value={this.state.caption} />
+                        <ul className="errors">
+                        {errors.map((error, index) => <li key={index}>{error}</li>)}
+                    </ul>
+                    </div>
+                </div>
+                    <input type="submit" className="btn" value={this.props.image.formType}/>
+                </form>
+            </div>
           );
     }
 }

@@ -1,0 +1,49 @@
+.post-form{
+    padding: 60px 20px 0 20px;
+    display: flex;
+    flex-grow: 1;
+
+    form{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+
+        &>div{
+            display: flex;
+            padding: 20px 0 20px 0
+            
+        }
+
+        .image-input{
+            margin-right: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #efefef;
+            label{
+                width: 50%
+            }
+            input{
+                display: none;
+            }
+            &>img{
+                object-fit: contain;
+                width: 450px;
+                height: 450px;
+                padding: 0 15px 15px 0;
+                margin-bottom: 15px;
+
+            border-bottom: 1px solid #efefef;
+
+            }
+        }
+        
+
+        .caption-input{
+            padding-top: 30px;
+
+        }
+    }
+
+}

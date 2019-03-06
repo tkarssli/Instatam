@@ -23,7 +23,9 @@ class PostContainer extends React.Component{
         const { post, users} = this.props;
         return (
             post ? (
-                <Post post={post} user={users[post.userId]}/>
+                <div className="post-show">
+                    <Post post={post} user={users[post.userId]}/>
+                </div>
             ):(
                 <div className="loader"> 
                     <div className="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>

@@ -8,7 +8,7 @@ import { updatePost } from '../../actions/post_actions';
 
 
 
-function EditPostFormContainer({ image, currUserId, action }) {
+function EditPostFormContainer({ image, currUserId, action, errors }) {
     const isPostOwner = () =>{
         if(image.post.userId !== currUserId){
            return <Redirect to="/"/>
@@ -17,7 +17,7 @@ function EditPostFormContainer({ image, currUserId, action }) {
     return(
         <>
             {isPostOwner()}
-            <PostForm image={image} action={action} />
+            <PostForm image={image} action={action} errors={errors}/>
 
             
         </>
@@ -33,7 +33,7 @@ const mSP = (state, ownProps) => {
             imageUrl: "", imageFile: null, caption: "", formType: 'edit', post
         }
 
-    return { image, currUserId }
+    return { image, currUserId, errors: state.errors.post }
 }
 
 const mDP = (dispatch,ownProps) => ({

@@ -28,7 +28,7 @@ class Post extends React.Component{
 
 
     openSettings(e) {
-        this.props.openSettingsModal({type: 'post', post})
+        this.props.openSettingsModal({type: 'post', post: this.props.post})
     }
 
     render() {
