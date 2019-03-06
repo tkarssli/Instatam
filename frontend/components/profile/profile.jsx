@@ -32,31 +32,41 @@ class Profile extends React.Component {
             this.props.user ? (
                 <>
                     <SettingsModal />
-                    <div className="profile-user">
-                        <div>
-                            {user.avatar ? (
-                                <img src={user.avatar}/>
-                            ):(
-                                <img src="/assets/default_avatar.svg"/>
+                    <div className="profile">
+                        <header>
+                            <div>
+                                <div>
+                                    {user.avatar ? (
+                                        <img src={user.avatar}/>
+                                    ):(
+                                        <>
+                                        <img className="profile-image" src="/assets/default_avatar.svg"/>
+                                        <div></div>
+                                        </>
 
-                            )}
+                                    )}
+                                </div>
+                            </div>
+                            <section>
+                                <div>
+                                    <h1>{user.username}</h1>
+                                    <div className="settings-icon-container">
+                                        {String(currentUser) === this.props.match.params.userId ? (<div onClick={() => openSettingsModal({type: 'profile'})} className="settings-icon icon glyph"></div>) : (<div>Follow</div>)}
+                                    </div>
+                                    
+                                </div>
+                                <div>
+                                    <p><span className="bold">{user.postIds.length}</span> posts</p>
+                                </div>
+                                <div>
+                                    <h3><span className="bold">{user.fullName}</span></h3>
+                                </div>
+                            </section>
+                        </header>
+                        <div className="h-seperator"></div>
+                        <div>
+                            <UserPostsIndexContainer id={this.props.match.params.userId}/>
                         </div>
-                        <section>
-                            <div>
-                                <h1>{user.username}</h1>
-                                {String(currentUser) === this.props.match.params.userId ? (<div onClick={() => openSettingsModal({type: 'profile'})} className="settings-icon icon glyph"></div>) : (<div>Follow</div>)}
-                                
-                            </div>
-                            <div>
-                                <p>{user.postIds.length}<span> posts</span></p>
-                            </div>
-                            <div>
-                                <h3>{user.fullName}</h3>
-                            </div>
-                        </section>
-                    </div>
-                    <div>
-                        <UserPostsIndexContainer id={this.props.match.params.userId}/>
                     </div>
                 </>
 

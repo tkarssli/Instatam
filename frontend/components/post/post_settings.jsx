@@ -14,9 +14,18 @@ function PostSettings({ modal, currUserId , clearModals}) {
     }
         return (
             <>
-                <div className="post-settings">
+                <div className="settings">
                     <ul>
-                        <div>Test</div>
+                        <li>
+                            <div>Test row one</div>
+                        </li>
+                        <li>
+                            <div>Test row two</div>
+                        </li>
+                        <li>
+                            <div>Test row three</div>
+                        </li>
+                        
                         {modal.post.userId === currUserId ? ( <Link to={`/p/${modal.post.id}/edit`} onClick={handleClick}>Edit</Link>) : ("")}
                        
                         {/* <li onClick={() => this.props.closeSettingsModal()}>Cancel</li> */}

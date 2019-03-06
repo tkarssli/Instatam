@@ -1,8 +1,44 @@
-.post-settings{
+.settings {
     display: flex;
     flex-direction: column;
     position: relative;
-    box-sizing: border-box
+    box-sizing: border-box;
+
+    width: 400px;
+
+    animation: IGCoreModalShow .1s ease-out;
+    background-color: #fff;
+    border-radius: 12px;
+    flex-shrink: 1;
+    margin: 20px;
+    max-height: calc(100% - 40px);
+
+    font-size: 14px;
+
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        line-height: 1.5;
+        min-height: 48px;
+        padding: 4px 8px;
+        text-align: center;
+        margin: 0;
+        border-bottom: 1px solid #efefef;
+
+        &:nth-last-of-type(1){
+            border: 0;
+        }
+
+        &:active {
+            background-color: rgba(0,0,0,.1);
+            opacity: 1;
+        }
+
+    }
+
 }
 
 // animation: IGCoreModalShow .1s ease-out;
@@ -14,3 +50,20 @@
 //     animation-direction: normal;
 //     animation-fill-mode: none;
 //     animation-play-state: running;
+
+
+
+@keyframes IGCoreModalShow {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+

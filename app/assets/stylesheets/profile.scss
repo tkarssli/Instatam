@@ -1,8 +1,70 @@
-.profile-user{
+.profile{
     display: flex;
     flex-direction: column;
+
+
+    box-sizing: content-box;
+    padding: 60px 20px 0;
+    width: calc(100% - 40px);
+
+    header{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 44px;
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+        }
+
+        &>div{
+            display: flex;
+            flex-grow: 1;
+            margin-right: 30px;
+
+        }
+
+        &>div>div{
+            background-color: #fafafa;
+            border-radius: 50%;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        
+    }
+
+    section{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 2;
+
+        color: #262626;
+        
+        div{
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        div:nth-last-of-type(1){
+            margin:0;
+        }
+
+    }
     div{
         display: flex;
+    }
+
+
+    .settings-icon-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 40px;
+        min-width: 40px;
     }
     .settings-icon{
         background-repeat: no-repeat;

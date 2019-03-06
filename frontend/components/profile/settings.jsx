@@ -20,7 +20,7 @@ class Settings extends React.Component{
     render () {
         return (
             <>
-                <div className="profile-settings">
+                <div className="settings">
                     <ul>
                         <li onClick={this.handleLogout}>Log out</li>
                         <li onClick={() => this.props.closeSettingsModal()}>Cancel</li>
