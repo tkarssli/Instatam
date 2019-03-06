@@ -10,7 +10,8 @@ class SessionForm extends React.Component {
         this.state = {
             username: "",
             password: "",
-            email: ""
+            email: "",
+            full_name:""
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,7 +33,7 @@ class SessionForm extends React.Component {
 
     handleDemoLogin(e) {
         const demo_user = { username: "demo_user", password: "password", formType: 'login' }
-        this.setState({ username: "", password: "" })
+        this.setState({ username: "", password: "", full_name:"" })
         let c = 150
         let ms = 0
 
@@ -86,13 +87,21 @@ class SessionForm extends React.Component {
 
                     />
                     {(formType === 'signup') ? (
-                        <input
-                            type="text"
-                            onChange={this.update('email')}
-                            value={this.state.email}
-                            placeholder="Email"
+                        <>
+                            <input
+                                type="text"
+                                onChange={this.update('email')}
+                                value={this.state.email}
+                                placeholder="Email"
 
-                        />
+                            />
+                            <input
+                                type="text"
+                                onChange={this.update('full_name')}
+                                value={this.state.full_name}
+                                placeholder="Full Name"
+                            />
+                        </>
                     ) : ""}
                     <input
                         type="password"
