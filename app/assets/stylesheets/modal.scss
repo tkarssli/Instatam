@@ -6,7 +6,6 @@
     left: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 10;
-    overflow: scroll;
     
     .modal-button {
       background: 0 0;
@@ -31,5 +30,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+
 
 

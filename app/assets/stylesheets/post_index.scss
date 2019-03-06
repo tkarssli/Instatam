@@ -11,6 +11,7 @@
 .index-row{
     display: flex;
     margin-bottom: 28px;
+    align-items: center
 
 }
 
@@ -41,7 +42,11 @@
     }
 }
 
-.post:nth-last-of-type(1){
-    margin-right: 0px;
-
+.post-index-item:nth-last-of-type(1){
+    margin: 0;
 }
+
+// .post:nth-last-of-type(1){
+//     margin-right: 0px;
+
+// }
