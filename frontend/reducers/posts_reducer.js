@@ -4,8 +4,6 @@ import {
     REMOVE_POST
 } from '../actions/post_actions'
 
-
-
 export default (oldState, action) => {
     Object.freeze(oldState);
     let state = Object.assign({}, oldState);

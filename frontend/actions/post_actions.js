@@ -36,8 +36,8 @@ export const createPost = post => dipatch => (
         err => (
             dispatch(postError(err.responseJSON))
         ))
-
 )
+
 export const updatePost = post => dipatch =>(
     APIUtil.updatePost(post)
         .then(post => dispatch(receivePost(post)),
