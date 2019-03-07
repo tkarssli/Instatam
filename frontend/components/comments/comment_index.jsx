@@ -12,14 +12,14 @@ class CommentIndex extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {body: "", post_id: this.props.post.Id}
+        this.state = {body: "", post_id: this.props.post.id}
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onEnterPress = this.onEnterPress.bind(this);
         this.handleLike = this.handleLike.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchComments(this.props.post.Id)
+        this.props.fetchComments(this.props.post.id)
     }
 
     handleSubmit() {
