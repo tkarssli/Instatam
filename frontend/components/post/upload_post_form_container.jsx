@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import PostForm from '../post/post_form';
-import { createPost } from '../../actions/post_actions';
+import { createPost, clearErrors } from '../../actions/post_actions';
 
 const mSP = state => ({
     image: {imageUrl: window.placeholder, imageFile: null, caption: "", formType: 'upload'},
@@ -9,7 +9,8 @@ const mSP = state => ({
 })
 
 const mDP = dispatch => ({
-    action: post => dispatch(createPost(post))
+    action: post => dispatch(createPost(post)),
+    clearErrors: () => dispatch(clearErrors())
 })
 
 export default connect(mSP, mDP)(PostForm)

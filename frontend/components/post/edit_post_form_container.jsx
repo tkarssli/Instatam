@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import PostForm from '../post/post_form';
-import { updatePost } from '../../actions/post_actions';
+import { updatePost, clearErrors } from '../../actions/post_actions';
 
 
 
@@ -17,7 +17,7 @@ function EditPostFormContainer({ image, currUserId, action, errors }) {
     return(
         <>
             {isPostOwner()}
-            <PostForm image={image} action={action} errors={errors}/>
+            <PostForm image={image} action={action} errors={errors} clearErrors={clearErrors}/>
 
             
         </>
@@ -37,7 +37,8 @@ const mSP = (state, ownProps) => {
 }
 
 const mDP = (dispatch,ownProps) => ({
-    action: formData => dispatch(updatePost(formData, ownProps.match.params.postId))
+    action: formData => dispatch(updatePost(formData, ownProps.match.params.postId)),
+    clearErrors: () => dispatch(clearErrors())
 })
 
 export default connect(mSP, mDP)(EditPostFormContainer)
