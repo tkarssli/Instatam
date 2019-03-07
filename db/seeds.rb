@@ -40,4 +40,14 @@ ActiveRecord::Base.transaction do
     (0...100).each do 
         Comment.create(body: Faker::Lorem.sentence, user_id: users.sample.id, post_id: posts.sample.id)
     end
+
+    Like.destroy_all 
+    users.each do |user|
+        like_posts = posts.dup
+        (0..like_posts.length-1).each do 
+            post = like_posts.pop
+            Like.create(user_id: user.id, post_id: post.id)
+        end
+
+    end
 end
