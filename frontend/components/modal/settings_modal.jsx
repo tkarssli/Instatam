@@ -26,7 +26,7 @@ class SettingsModal extends React.Component {
             case 'post':
                 component = <PostSettings />
                 break;
-
+                
             default:
                 return null;
         }

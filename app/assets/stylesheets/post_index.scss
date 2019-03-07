@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    flex-grow: 1;
+    position: relative;
 
     margin-top: 16px;
 }

@@ -1,0 +1,41 @@
+.loading-modal-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #FAFAFA;
+    z-index: 4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    // .modal-button {
+    //   background: 0 0;
+    //   border: 0;
+    //   cursor: pointer;
+    //   height: 16px;
+    //   width: 16px;
+    //   // outline: 0;
+    //   // overflow: hidden;
+    //   background: image_url("sprites.png") no-repeat -108px -403px;
+    //   position: absolute;
+    //   margin: 10px;
+    //   right: 0;
+    //   top: 0;
+    //   z-index: 2;
+    // }
+}
+  
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+
