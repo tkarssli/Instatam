@@ -50,9 +50,9 @@ class Navbar extends React.Component {
                             {currentUser ? (
                                 <>
                                     <div className="nav-links-container">
-                                        <div>
+                                        {/* <div>
                                             <span className="like-icon icon glyph"></span>
-                                        </div>
+                                        </div> */}
                                         <div>
                                             <Link to="/upload" className="upload-icon icon glyph"></Link>
                                         </div>
