@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 import Post from './post';
+import SettingsModal from '../modal/settings_modal'
 
 import { fetchPost } from '../../actions/post_actions';
 
@@ -22,7 +23,9 @@ class PostContainer extends React.Component{
     render () {
         const { post, users} = this.props;
         return (
-            post ? (
+            <>
+            <SettingsModal />
+            {post ? (
                 <div className="post-show">
                     <Post post={post} user={users[post.userId]}/>
                 </div>
@@ -30,7 +33,8 @@ class PostContainer extends React.Component{
                 <div className="loader"> 
                     <div className="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                 </div>
-            )
+            )}
+            </>
         )
     }
 }

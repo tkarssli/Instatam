@@ -3,41 +3,63 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import PostForm from '../post/post_form';
-import { updatePost, clearErrors } from '../../actions/post_actions';
+import { updatePost, clearErrors, fetchPost } from '../../actions/post_actions';
 
 
 
 
-function EditPostFormContainer({ image, currUserId, action, errors }) {
-    const isPostOwner = () =>{
-        if(image.post.userId !== currUserId){
-           return <Redirect to="/"/>
-        }
-    }
-    return(
-        <>
-            {isPostOwner()}
-            <PostForm image={image} action={action} errors={errors} clearErrors={clearErrors}/>
-
+class EditPostFormContainer extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {imageUrl: "", imageFile: null, caption: "", formType: 'update'}
+        // const image = post ? {
+        //     imageUrl: post.photoUrl, imageFile: null, caption: post.caption, formType: 'update', post
+        // } : {
             
-        </>
-    )
+        // }
+        // this.componentDidMount = this.componentDidMount.bind(this)
+    }
+    componentDidMount() {
+        const that = this;
+
+        this.props.fetchPost(this.props.match.params.postId)
+        .then((res)=>{
+            const post = res.post
+            this.isPostOwner()
+            this.setState({imageUrl: post.photoUrl, caption: post.caption})
+
+        })
+    }
+    isPostOwner() {
+        if(this.props.post.userId !== this.props.currUserId){
+           return this.props.history.push('/')
+        }
+
+    }
+
+    render(){
+       const { post, currUserId, action, errors, fetchPost } = this.props
+        return(
+            <>
+                <PostForm image={this.state} action={action} errors={errors} clearErrors={this.props.clearErrors}/>
+    
+                
+            </>
+        )
+    }
 }
 
 const mSP = (state, ownProps) => {
-    const post = state.entities.posts[ownProps.match.params.postId];
-    const currUserId = state.session.id;
-    const image = post ? {
-            imageUrl: post.photoUrl, imageFile: null, caption: post.caption, formType: 'edit', post
-        } : {
-            imageUrl: "", imageFile: null, caption: "", formType: 'edit', post
+    return { 
+            post: state.entities.posts[ownProps.match.params.postId],
+            currUserId: state.session.id, 
+            errors: state.errors.post 
         }
-
-    return { image, currUserId, errors: state.errors.post }
 }
 
 const mDP = (dispatch,ownProps) => ({
     action: formData => dispatch(updatePost(formData, ownProps.match.params.postId)),
+    fetchPost: postId => dispatch(fetchPost(postId)),
     clearErrors: () => dispatch(clearErrors())
 })
 

@@ -28,9 +28,10 @@ function PostSettings({ modal, currUserId , clearModals, deletePost, closeSettin
                                 <li onClick={handleDelete}>
                                     <span className="danger-text">Delete Post</span>
                                 </li>
-                                    <Link to={`/p/${modal.post.id}/edit`} onClick={handleClick} >Edit</Link>
+                                <Link to={`/p/${modal.post.id}/edit`} onClick={handleClick} >Update Post</Link>
                             </>
                         )}
+                        <Link to={`/p/${modal.post.id}`} onClick={handleClick} >Show Post</Link>
                         <li onClick={() => closeSettingsModal()}>
                             Cancel
                         </li>

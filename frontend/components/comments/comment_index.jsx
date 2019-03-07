@@ -61,7 +61,7 @@ class CommentIndex extends React.Component {
                     <div className="likes">
                         <span className="bold">{post.likedUserIds.length} likes</span>
                     </div>
-                    <div className="createdAt"></div>
+                    <div className="createdAt">{post.createdAt}</div>
                     <form >
                         <textarea onKeyDown={this.onEnterPress} placeholder="Add a comment..." onChange={(e)=> this.setState({body: e.target.value})} value={this.state.body}/>
                         <input type="submit" value=""></input>
