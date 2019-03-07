@@ -4,6 +4,10 @@ import {
     REMOVE_POST
 } from '../actions/post_actions'
 
+import {
+    RECEIVE_COMMENT
+} from '../actions/comment_actions'
+
 export default (oldState, action) => {
     Object.freeze(oldState);
     let state = Object.assign({}, oldState);
@@ -12,6 +16,7 @@ export default (oldState, action) => {
         case RECEIVE_POSTS:
             return action.posts;
         
+        case RECEIVE_COMMENT:
         case RECEIVE_POST:
             state[action.post.id] = action.post;
             return state;

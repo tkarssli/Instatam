@@ -19,7 +19,7 @@ export const fetchComments = (postId) => dispatch => (
 
 export const fetchComment = commentId => dispatch => (
     APIUtil.fetchComment(commentId)
-        .then(comment => dispatch(receiveComment(comment)),
+        .then(payload => dispatch(receiveComment(payload)),
         err => (
             dispatch(commentError(err.responseJSON))
         ))
@@ -58,9 +58,10 @@ export const receiveComments = ({users, comments}) => ({
     comments
 })
 
-export const receiveComment = comment => ({
+export const receiveComment = ({ comment, post }) => ({
     type: RECEIVE_COMMENT,
-    comment
+    comment,
+    post
 })
 
 export const removeComment = commentId => ({
