@@ -21,6 +21,10 @@ class PostIndexItem extends React.Component {
                     <span className="comment-count sprite glyph"></span>
                     <span className="bold">{post.commentIds.length}</span>
                 </div>
+                <div>
+                    <span className="like-count sprite glyph"></span>
+                    <span className="bold">{post.likedUserIds.length}</span>
+                </div>
             </div>
             <img ref={elem => this.img = elem} src={post.photoUrl} alt={post.caption}/>
         </div>
