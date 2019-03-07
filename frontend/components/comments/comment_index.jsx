@@ -12,19 +12,23 @@ class CommentIndex extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {body: "", post_id: this.props.postId}
+        this.state = {body: "", post_id: this.props.post.Id}
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onEnterPress = this.onEnterPress.bind(this);
+        this.handleLike = this.handleLike.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchComments(this.props.postId)
+        this.props.fetchComments(this.props.post.Id)
     }
 
     handleSubmit() {
         // e.preventDefault()
         this.setState({body: ""})
         this.props.createComment(this.state)
+    }
+    handleLike() {
+
     }
 
     onEnterPress(e){
@@ -35,7 +39,7 @@ class CommentIndex extends React.Component {
       }
 
     render() { 
-        const { comments, users, clearModals, currUserId, deleteComment} = this.props
+        const { comments, users, clearModals, currUserId, deleteComment, post} = this.props
         return (
             comments ? (
                 <>
@@ -49,6 +53,15 @@ class CommentIndex extends React.Component {
                                 deleteComment={deleteComment}
                             />))}
                     </div>
+                    <div className="icons">
+                        <div>
+                            <span className="like-icon icon glyph" onClick={this.handleLike}></span>
+                        </div>
+                    </div>
+                    <div className="likes">
+                        <span className="bold">{post.likedUserIds.length} likes</span>
+                    </div>
+                    <div className="createdAt"></div>
                     <form >
                         <textarea onKeyDown={this.onEnterPress} placeholder="Add a comment..." onChange={(e)=> this.setState({body: e.target.value})} value={this.state.body}/>
                         <input type="submit" value=""></input>

@@ -1,0 +1,121 @@
+.comment-index{
+    bottom: 0;
+    box-sizing: border-box;
+    padding-left: 24px;
+    padding-right: 24px;
+    position: absolute;
+    right: 0;
+    top: 78px;
+    width: 335px;
+
+    display: flex;
+    flex-direction: column;
+
+    .comment-feed {
+        // margin: 0 -24px;
+        order: 2;
+        overflow-x: hidden;
+        overflow-anchor: none;
+        word-break: break-word;
+        flex-grow: 1;
+    }
+    &>p {
+        padding: 20px 0;
+        margin-bottom: 10px;
+        order: 1;
+        border-bottom: 1px solid #efefef;
+
+
+    }
+    .comment-row {
+        position: relative;
+        padding-right: 36px;
+
+        .close-icon{
+            position: absolute;
+            right: 9px;
+            top: 0px;
+            padding: 4px;
+
+
+            border: 0;
+            border-radius: 6px;
+
+            &>div{
+                background-position: -86px -62px;
+                width: 9px;
+                height: 9px;
+            }
+        }
+
+        .close-icon:active {
+            background-color: #efefef;
+        }
+    }
+    .icons{
+        display: flex;
+        order:3;
+        border-top: 1px solid #efefef;
+        margin: 0;
+        padding-top: 2px;
+
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            min-width: 40px;
+
+            cursor: pointer;
+        }
+    }
+    .likes{
+        order: 4;
+    }
+    .createdAt{
+        order: 5;
+    }
+    form {
+        order: 6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 55px;
+        border-top: 1px solid #efefef;
+
+    }
+    textarea {
+        display: flex;
+        flex-grow: 1;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 26px 0 0px;
+        background-color: #FFFFFF;
+        border: 0;
+        margin: 0;
+        outline: 0;
+        resize: none;
+        font-family: inherit;
+        background: 0 0;
+        max-height: 80px;
+
+        overflow: hidden;
+
+        height: 36px;
+        line-height: 18px;
+
+    }
+    textarea:focus {
+    }
+
+    input[type="submit"]{
+        visibility: hidden;
+        position: absolute;
+
+    }
+
+    // &>div{
+    //     display: flex
+    // }
+}

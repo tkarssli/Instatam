@@ -51,7 +51,7 @@ class Navbar extends React.Component {
                                 <>
                                     <div className="nav-links-container">
                                         <div>
-                                            <span className="follows-icon icon glyph"></span>
+                                            <span className="like-icon icon glyph"></span>
                                         </div>
                                         <div>
                                             <Link to="/upload" className="upload-icon icon glyph"></Link>

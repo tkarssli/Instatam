@@ -55,7 +55,7 @@ class Post extends React.Component{
                     ):("")}
                 <div className="comment-index">
                     <p>{post.caption}</p>
-                    <CommentsIndex postId={post.id} />
+                    <CommentsIndex post={post} />
                 </div>
                 <div className="hamburger">
                     <div onClick={this.openSettings} className="icon glyph"></div>
