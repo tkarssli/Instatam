@@ -48,6 +48,8 @@ section.main-content {
     flex-direction: column;
     margin-top: 77px;
     flex-grow: 1;
+    max-width: 935px;
+    width: 100%;
 }
 
 a {

@@ -25,6 +25,14 @@
 
         }
 
+        &>section>div:nth-of-type(1){
+            display: flex;
+
+            &>*{
+                margin-right: 20px;
+            }
+        }
+
         &>div>div{
             background-color: #fafafa;
             border-radius: 50%;
@@ -43,6 +51,10 @@
         flex-grow: 2;
 
         color: #262626;
+
+        .user-stats>p{
+            margin-right: 40px;
+        }
         
         div{
             display: flex;
@@ -71,5 +83,27 @@
         background-position: -241px -130px;
         height: 24px;
         width: 24px;
+    }
+
+    .follow-btn-header, 
+    .following-btn-header {
+        padding: 0 24px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 26px;
+
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    .follow-btn-header{
+        border-color: #3897f0;
+    }
+
+    .following-btn-header {
+        background: 0 0;
+        border-color: #dbdbdb;
+        color: #262626;
+
     }
 }

@@ -9,7 +9,7 @@
 require 'faker'
 
 ActiveRecord::Base.transaction do
-
+    r = Random.new
     User.destroy_all
 
     # DON'T DELETE #######################################################################
@@ -21,41 +21,56 @@ ActiveRecord::Base.transaction do
     u3 = User.create(username: "zkarssli", full_name: "Zane Karssli", email: "Zane@Music.com", password: "password")
     u4 = User.create(username: "ari_design_master", full_name: "Ari Gachalapoilichaloop", email: "Ari@Gallapagos.com", password: "password", avatar: Faker::Avatar.unique.image)
 
+    custom_users = [demo,u1,u2,u3,u4]
+
     users = []
-    (0..20).each do 
-        users.push(User.create(username: Faker::Internet.unique.username, full_name: Faker::Name.unique.name, avatar: Faker::Avatar.image, email: Faker::Internet.unique.email, password: "password"))
+    (0..50).each do 
+        users.push(User.create(username: Faker::Internet.unique.username, full_name: Faker::FunnyName.unique.name, avatar: Faker::Avatar.image, email: Faker::Internet.unique.email, password: "password"))
     end
+    users.concat(custom_users)
+    user_count = users.length
+    puts "Users created"
 
     Post.destroy_all
     posts = []
-    (0...23).each do |n|
-        filename = "seed#{n}"
-        file = File.open("seed/#{filename}.jpg")
+    (0...199).each do |n|
+        filename = "seed#{n}.jpg"
+        file = File.open("seed/#{filename}")
         user = users.sample
-        post = Post.create(caption: Faker::Hipster.unique.sentence, user_id: user.id)
+        post = Post.create(caption: Faker::GreekPhilosophers.quote, user_id: user.id)
         posts.push(post)
         post.photo.attach(io: file, filename: filename)
+        puts filename + " attached"
     end
+    post_count = posts.length
+    puts "Posts created"
 
-    (0...100).each do 
-        Comment.create(body: Faker::Lorem.sentence, user_id: users.sample.id, post_id: posts.sample.id)
+    (0...500).each do 
+        Comment.create(body: Faker::Movie.quote, user_id: users.sample.id, post_id: posts.sample.id)
     end
+    puts "Comments created"
 
     Like.destroy_all 
     users.each do |user|
         like_posts = posts.dup
-        (0..like_posts.length-1).each do 
+        like_posts.shuffle!
+        n = (r.rand*200).round
+        (n..post_count-1).each do 
             post = like_posts.pop
             Like.create(user_id: user.id, post_id: post.id)
         end
     end
+    puts "Likes created"
 
     Follow.destroy_all
     users.each do |user|
         follow_users = users.dup
-        (0..follow_users.length-1).each do 
+        follow_users.shuffle!
+        n= (r.rand*100).round
+        (n..user_count-1).each do 
             follow_user = follow_users.pop
             Follow.create(user_id: user.id, follower_id: follow_user.id)
         end
     end
+    puts "Follows created"
 end

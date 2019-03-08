@@ -2,23 +2,22 @@ import React from 'react';
 import { closePostModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
+import { noScrollBody, scrollBody } from '../../lib/dom'
 import PostIndexItemModal from '../post/post_index_item_modal';
+import { clearScroll } from '../../actions/scroll_actions';
 
 class PostModal extends React.Component {
 
     componentDidUpdate(){
         
         const { postModal, scroll } = this.props
-        const body = document.getElementsByTagName('body')[0]
 
         // Stop body from scrolling while modal is open
         if (postModal.type) {
-            body.style.top = `-${scroll}px`
-            body.classList.add('no-scroll')
+            noScrollBody(scroll)
         } else {
-            body.classList.remove('no-scroll')
-            document.documentElement.scrollTop = scroll;
+            scrollBody(scroll)
+            // this.props.clearScroll();
         }
     }
 
@@ -60,6 +59,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closePostModal: () => dispatch(closePostModal()),
+    // clearScroll: () => dispatch(clearScroll())
   };
 };
 

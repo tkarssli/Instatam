@@ -5,22 +5,27 @@ import Post from './post';
 import SettingsModal from '../modal/settings_modal'
 
 import { fetchPost } from '../../actions/post_actions';
+import { scrollBody } from '../../lib/dom';
 
 class PostContainer extends React.Component{
 
     componentDidMount() {
+        scrollBody(0)
         this.props.fetchPost(this.props.match.params.postId)
             .then(()=> this.props.fetchUser(this.props.post.userId))
     }
 
     componentDidUpdate(prevProps){
         if(this.props.match.params.postId !== prevProps.match.params.postId){
+            scrollBody(0)
             this.props.fetchPost(this.props.match.params.postId)
             .then(({ post }) => {this.props.fetchUser(post.userId)})
         }
     }
 
     render () {
+        document.documentElement.scrollTop = 0;
+
         const { post, users} = this.props;
         return (
             <>

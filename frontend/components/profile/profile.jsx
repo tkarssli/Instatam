@@ -7,6 +7,8 @@ import UserPostsIndexContainer from '../post/user_post_index_container';
 class Profile extends React.Component {
     constructor(props) {
         super(props)
+
+        this.handleFollow = this.handleFollow.bind(this);
     }
 
     componentDidMount() {
@@ -20,13 +22,37 @@ class Profile extends React.Component {
             this.props.clearScroll()
 
         }
+    }
 
+    handleFollow(e) {
+        e.persist()
+        const { currentUser, user, deleteFollow, createFollow } = this.props
+
+        if (currentUser.followIds.includes(user.id)){
+            deleteFollow(user.id)
+            .then(()=>  {
+                e.target.className = "follow-btn-header btn" })
+            } else {
+                createFollow(user.id)
+                .then(()=>  {
+                    e.target.className = "following-btn-header btn" })
+        }
     }
 
     render() { 
         document.documentElement.scrollTop = 0;
-
         const { user, currentUser, openSettingsModal } = this.props;
+
+        const getFollowButton = () => {
+            return (
+                currentUser.followIds.includes(user.id) ? (
+                    <span className="following-btn-header btn" onClick={this.handleFollow}>Following</span>
+                ) : (
+                    <span className="follow-btn-header btn" onClick={this.handleFollow}>Follow</span>
+                )
+            )
+        }
+
         return (  
             this.props.user ? (
                 <>
@@ -49,12 +75,14 @@ class Profile extends React.Component {
                                 <div>
                                     <h1>{user.username}</h1>
                                     <div className="settings-icon-container">
-                                        {String(currentUser) === this.props.match.params.userId ? (<div onClick={() => openSettingsModal({type: 'profile'})} className="settings-icon icon glyph"></div>) : (<div>Follow</div>)}
+                                        {String(currentUser.id) === this.props.match.params.userId ? (<div onClick={() => openSettingsModal({type: 'profile'})} className="settings-icon icon glyph"></div>) : (getFollowButton())}
                                     </div>
                                     
                                 </div>
-                                <div>
+                                <div className="user-stats">
                                     <p><span className="bold">{user.postIds.length}</span> posts</p>
+                                    <p><span className="bold">{user.followerIds.length}</span> followers</p>
+                                    <p><span className="bold">{user.followIds.length}</span> following</p>
                                 </div>
                                 <div>
                                     <h3><span className="bold">{user.fullName}</span></h3>

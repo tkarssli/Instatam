@@ -5,6 +5,7 @@ import PostIndexItem from './post_index_item';
 import PostModal from '../modal/post_modal'
 import SettingsModal from '../modal/settings_modal'
 import LoadingModal from '../modal/loading_modal'
+import { scrollBody } from '../../lib/dom';
 
 class PostIndex extends React.Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class PostIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if(this.props.match.params.userId !== prevProps.match.params.userId){
+            scrollBody(0)
             this.props.openLoadingModal();
             this.props.action(this.props.match.params.userId)
                 .then(() => this.props.closeLoadingModal())
@@ -22,6 +24,7 @@ class PostIndex extends React.Component {
     }
 
     componentDidMount() {
+        scrollBody(0)
         this.props.openLoadingModal();
         this.props.action(this.props.match.params.userId)
             .then(()=>this.props.closeLoadingModal())

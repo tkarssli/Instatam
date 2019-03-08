@@ -25,11 +25,11 @@ class Post extends React.Component{
         if (currUser.followIds.includes(user.id)){
             deleteFollow(user.id)
             .then(()=>  {
-                e.target.className = "following-btn" })
-        } else {
-            createFollow(user.id)
-            .then(()=>  {
                 e.target.className = "follow-btn" })
+            } else {
+                createFollow(user.id)
+                .then(()=>  {
+                    e.target.className = "following-btn" })
         }
     }
 
@@ -55,11 +55,11 @@ class Post extends React.Component{
                         )}
                     <div>
                         <Link onClick={this.handleClick} to={`/${user.id}`}>{user.username}</Link>
-                        <span classNa>•</span>
+                        <span>•</span>
                         {currUser.followIds.includes(user.id) ? (
-                                <span className="follow-btn" onClick={this.handleFollow}>Follow</span>
-                            ) : (
                                 <span className="following-btn" onClick={this.handleFollow}>Following</span>
+                            ) : (
+                                <span className="follow-btn" onClick={this.handleFollow}>Follow</span>
                             )}
                     </div>
                 </header>

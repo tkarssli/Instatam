@@ -21,7 +21,6 @@ class EditPostFormContainer extends React.Component {
     }
     componentDidMount() {
         const that = this;
-
         this.props.fetchPost(this.props.match.params.postId)
         .then((res)=>{
             const post = res.post
@@ -41,7 +40,7 @@ class EditPostFormContainer extends React.Component {
        const { post, currUserId, action, errors, fetchPost } = this.props
         return(
             <>
-                <PostForm image={this.state} action={action} errors={errors} clearErrors={this.props.clearErrors}/>
+                <PostForm image={this.state} action={action} errors={errors} clearErrors={this.props.clearErrors} post={post}/>
     
                 
             </>
@@ -53,7 +52,7 @@ const mSP = (state, ownProps) => {
     return { 
             post: state.entities.posts[ownProps.match.params.postId],
             currUserId: state.session.id, 
-            errors: state.errors.post 
+            errors: state.errors.post
         }
 }
 

@@ -28,7 +28,8 @@ class PostForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        const post = Object.assign({}, this.state)
+        const post = Object.assign({post: this.props.post}, this.state)
+        debugger
         this.props.action(post)
             .then((res) => {
                 this.props.history.push(`/p/${res.post.id}`)})
