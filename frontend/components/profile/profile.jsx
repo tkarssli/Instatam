@@ -37,7 +37,7 @@ class Profile extends React.Component {
                             <div>
                                 <div>
                                     {user.avatar ? (
-                                        <img src={user.avatar}/>
+                                        <img className="profile-image" src={user.avatar}/>
                                     ):(
                                         <>
                                         <img className="profile-image" src="/assets/default_avatar.svg"/>
