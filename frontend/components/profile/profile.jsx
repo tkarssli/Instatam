@@ -23,7 +23,6 @@ class Profile extends React.Component {
 
     }
 
-
     render() { 
         document.documentElement.scrollTop = 0;
 
@@ -43,7 +42,6 @@ class Profile extends React.Component {
                                         <img className="profile-image" src="/assets/default_avatar.svg"/>
                                         <div></div>
                                         </>
-
                                     )}
                                 </div>
                             </div>
@@ -69,7 +67,6 @@ class Profile extends React.Component {
                         </div>
                     </div>
                 </>
-
             ) : (
                 <div className="loader"> 
                     <div className="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
