@@ -19,7 +19,7 @@ ActiveRecord::Base.transaction do
     u1 = User.create(username: "tkarssli", full_name: "Tamir Karssli", email: "Tamir@Karssli.com", password: "password")
     u2 = User.create(username: "doro", full_name: "Dorotea Ciani", email: "Dorotea@Italy.com", password: "password")
     u3 = User.create(username: "zkarssli", full_name: "Zane Karssli", email: "Zane@Music.com", password: "password")
-    u4 = User.create(username: "ari_design_master", full_name: "Ari Gachalapoilichaloop", email: "Ari@Gallapagos.com", password: "password", avatar: Faker::Avatar.unique.image)
+    u4 = User.create(username: "XXX_NOSCOPE_ari_design_master#420__XXX", full_name: "Ari Gachalapoilichaloop", email: "Ari@Gallapagos.com", password: "password", avatar: Faker::Avatar.unique.image)
 
     custom_users = [demo,u1,u2,u3,u4]
 
