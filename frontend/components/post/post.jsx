@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { clearModals, openSettingsModal } from '../../actions/modal_actions';
+import { createFollow, deleteFollow } from '../../actions/follow_actions';
 
 import CommentsIndex from '../comments/comment_index'
 
@@ -12,27 +13,32 @@ class Post extends React.Component{
 
         this.handleClick = this.handleClick.bind(this);
         this.openSettings = this.openSettings.bind(this);
+        this.handleFollow = this.handleFollow.bind(this);
     }
     handleClick(e) {
         this.props.clearModals()
     }
-    // componentDidMount() {
-    //     this.img.onload = () => {
-    //         if(this.img.height <= 450){
-    //             debugger
-    //             this.img.style.objectFit = "cover"
-    //         }
-    //     }
-    // }
+    handleFollow(e) {
+        e.persist()
+        const { currUser, user, deleteFollow, createFollow } = this.props
 
-
+        if (currUser.followIds.includes(user.id)){
+            deleteFollow(user.id)
+            .then(()=>  {
+                e.target.className = "following-btn" })
+        } else {
+            createFollow(user.id)
+            .then(()=>  {
+                e.target.className = "follow-btn" })
+        }
+    }
 
     openSettings(e) {
         this.props.openSettingsModal({type: 'post', post: this.props.post})
     }
 
     render() {
-        const { post, user} = this.props;
+        const { post, user, currUser} = this.props;
         return (
             <article className="post post-detail">
             
@@ -49,7 +55,12 @@ class Post extends React.Component{
                         )}
                     <div>
                         <Link onClick={this.handleClick} to={`/${user.id}`}>{user.username}</Link>
-                        {/* <span>•</span> */}
+                        <span classNa>•</span>
+                        {currUser.followIds.includes(user.id) ? (
+                                <span className="follow-btn" onClick={this.handleFollow}>Follow</span>
+                            ) : (
+                                <span className="following-btn" onClick={this.handleFollow}>Following</span>
+                            )}
                     </div>
                 </header>
                     ):("")}
@@ -64,10 +75,14 @@ class Post extends React.Component{
         )
     }
 }
-
+const mSP = state => ({
+    currUser: state.entities.users[state.session.id]
+})
 const mDP = dispatch => ({
     clearModals: () => dispatch(clearModals()),
-    openSettingsModal: modal => dispatch(openSettingsModal(modal))
+    openSettingsModal: modal => dispatch(openSettingsModal(modal)),
+    createFollow: userId => dispatch(createFollow(userId)),
+    deleteFollow: userId => dispatch(deleteFollow(userId))
 })
 
-export default connect(null, mDP)(Post)
+export default connect(mSP, mDP)(Post)
