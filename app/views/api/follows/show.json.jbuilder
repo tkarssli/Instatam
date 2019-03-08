@@ -1,6 +1,8 @@
-json.set! "user" do 
+
+json.set!   @follow.user.id do
     json.partial! 'api/users/user', user: @follow.user
 end
-json.set! "follower" do 
+
+json.set!   @follow.follower.id do
     json.partial! 'api/users/user', user: @follow.follower
 end

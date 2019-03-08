@@ -48,6 +48,14 @@ ActiveRecord::Base.transaction do
             post = like_posts.pop
             Like.create(user_id: user.id, post_id: post.id)
         end
+    end
 
+    Follow.destroy_all
+    users.each do |user|
+        follow_users = users.dup
+        (0..follow_users.length-1).each do 
+            follow_user = follow_users.pop
+            Follow.create(user_id: user.id, follower_id: follow_user.id)
+        end
     end
 end
