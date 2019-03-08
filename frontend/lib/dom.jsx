@@ -8,6 +8,7 @@ export const noScrollBody = (scroll) => {
 
 export const scrollBody = (scroll) => {
     const body = document.getElementsByTagName('body')[0]
+    body.style.top = 0;
     body.classList.remove('no-scroll')
     document.documentElement.scrollTop = scroll;
 }

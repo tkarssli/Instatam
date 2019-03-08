@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import Navbar from './navbar'
 import { logout } from '../../actions/session_actions'
+import { clearScroll } from '../../actions/scroll_actions';
 
 const mapStateToProps = state => ({
     currentUser: state.entities.users[state.session.id],
@@ -8,7 +9,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    clearScroll: () => dispatch(clearScroll())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

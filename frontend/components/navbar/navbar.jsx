@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { scrollBody } from '../../lib/dom';
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -10,8 +11,9 @@ class Navbar extends React.Component {
             this.state = { navClass: "navbar navbar-thick", fadeClass: "fade-container" }
         }
 
-        this.handleLogout = this.handleLogout.bind(this)
-        this.listenScrollEvent = this.listenScrollEvent.bind(this)
+        this.handleLogout = this.handleLogout.bind(this);
+        this.handleHome = this.handleHome.bind(this);
+        this.listenScrollEvent = this.listenScrollEvent.bind(this);
     }
 
     listenScrollEvent(e) {
@@ -27,6 +29,12 @@ class Navbar extends React.Component {
         this.props.history.push('/')
     }
 
+    handleHome(e) {
+        this.props.clearScroll();
+        scrollBody(0);
+        document.documentElement.scrollTop = 0;
+    }
+
     componentDidMount() {
         window.addEventListener('scroll', this.listenScrollEvent)
     }
@@ -38,7 +46,7 @@ class Navbar extends React.Component {
                 {(['/signup', '/login', '/'].includes(location.pathname)) && !currentUser ? ("") : (
                     <div className="navbar-container">
                         <nav className={this.state.navClass}>
-                            <Link to="/" className="nav-logo">
+                            <Link onClick={this.handleHome} to="/" className="nav-logo">
                                 <div className="logo icon"></div>
                                 <div className={this.state.fadeClass}>
                                     <div className="pipe icon"></div>

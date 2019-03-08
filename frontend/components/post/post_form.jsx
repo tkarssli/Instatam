@@ -17,7 +17,7 @@ class PostForm extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(this.props.image.imageUrl !== this.state.imageUrl && this.props.location.pathname !== '/upload'){
+        if(this.props.image.imageUrl !== "" && this.state.imageUrl === "" && this.props.location.pathname !== '/upload'){
             this.setState(this.props.image)
         }
     }
@@ -29,7 +29,7 @@ class PostForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         const post = Object.assign({post: this.props.post}, this.state)
-        debugger
+        // debugger
         this.props.action(post)
             .then((res) => {
                 this.props.history.push(`/p/${res.post.id}`)})
@@ -39,7 +39,7 @@ class PostForm extends React.Component {
         const reader = new FileReader();
         const file = e.currentTarget.files[0];
         reader.onloadend = () => this.setState({ imageUrl: reader.result, imageFile: file });
-        
+        debugger
         if (file) {
             reader.readAsDataURL(file);
         } else {

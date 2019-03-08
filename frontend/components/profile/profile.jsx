@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import SettingsModal from '../modal/settings_modal';
 import UserPostsIndexContainer from '../post/user_post_index_container';
+import { scrollBody } from '../../lib/dom';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -14,17 +15,21 @@ class Profile extends React.Component {
     componentDidMount() {
         this.props.fetchUser(this.props.match.params.userId)
         .fail(res => this.props.history.push('/'))
+        scrollBody(0)
+
     }
 
     componentDidUpdate(prevProps){
         if(this.props.match.params.userId !== prevProps.match.params.userId){
             this.props.fetchUser(this.props.match.params.userId)
             this.props.clearScroll()
-
+            
         }
+        // scrollBody(0);
     }
 
     handleFollow(e) {
+        e.preventDefault();
         e.persist()
         const { currentUser, user, deleteFollow, createFollow } = this.props
 
@@ -42,17 +47,16 @@ class Profile extends React.Component {
     render() { 
         document.documentElement.scrollTop = 0;
         const { user, currentUser, openSettingsModal } = this.props;
-
         const getFollowButton = () => {
             return (
                 currentUser.followIds.includes(user.id) ? (
                     <span className="following-btn-header btn" onClick={this.handleFollow}>Following</span>
-                ) : (
-                    <span className="follow-btn-header btn" onClick={this.handleFollow}>Follow</span>
-                )
-            )
-        }
-
+                    ) : (
+                        <span className="follow-btn-header btn" onClick={this.handleFollow}>Follow</span>
+                        )
+                        )
+                    }
+                    
         return (  
             this.props.user ? (
                 <>
