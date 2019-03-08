@@ -13,7 +13,7 @@ class Api::LikesController < ApplicationController
     end
 
     def destroy
-        @like = Like.find_by(user_id: current_user.id, post_id: params[:id])
+        @like = Like.find_by(user_id: current_user.id, post_id: params[:post_id])
         if @like || current_user.id == @like.user_id
             @like.destroy
             render :show, status: 200
