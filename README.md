@@ -1,7 +1,6 @@
 # Instatam
 [![Maintainability](https://api.codeclimate.com/v1/badges/52936977bb866e02e4ca/maintainability)](https://codeclimate.com/github/tkarssli/Instatam/maintainability)
 
-[Link to Live Site](http://www.insta-tam.com)
 ![Instatam Logo](https://res.cloudinary.com/tkarssli/image/upload/v1552073146/instatam.png)
 
 
