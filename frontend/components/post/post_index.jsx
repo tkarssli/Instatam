@@ -33,13 +33,22 @@ class PostIndex extends React.Component {
 
     formatGrid(posts) {
         let item_components;
+        const comparable = (a,b) => {
+            const aDate = new Date(a.createdAt);
+            const bDate = new Date(b.createdAt);
+            return (aDate <= bDate) ? 1 : -1
+        }
+        
         if(this.props.id){
             // Profile post index
             let user_posts = [];
-            posts.forEach((post) => post.id === (this.props.id ? user_posts.push(post) : user_posts.push()));
+            s.forEach((post) => post.id === (this.props.id ? user_posts.push(post) : user_posts.push()));
+            user_posts.sort(comparable);
             item_components = user_posts.map(post => <PostIndexItem post={post} key={post.id} openPostModal={this.props.openPostModal}/>)
         } else {
             // Main page index
+            console.log(posts)
+            posts.sort(comparable)
             item_components = posts.map(post => <PostIndexItem post={post} key={post.id} openPostModal={this.props.openPostModal}/>)
         }
         let res = []
