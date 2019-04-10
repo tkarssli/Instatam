@@ -5,15 +5,14 @@ import { clearModals } from '../../actions/modal_actions'
 
 
 import CommentIndexItem from './comment_index_item'
+import LoadingModal from '../modal/loading_modal';
 import { createLike, deleteLike } from '../../actions/like_actions';
-// import PostIndexItem from './post_index_item';
-// import Modal from '../modal/modal'
 
 class CommentIndex extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {body: "", post_id: this.props.post.id}
+        this.state = {body: "", post_id: this.props.post.id, loading: true}
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onEnterPress = this.onEnterPress.bind(this);
         this.handleLike = this.handleLike.bind(this);
@@ -21,6 +20,7 @@ class CommentIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchComments(this.props.post.id)
+        .then(() => this.setState({loading: false}))
     }
 
     handleSubmit() {
@@ -91,6 +91,8 @@ class CommentIndex extends React.Component {
                         <textarea onKeyDown={this.onEnterPress} placeholder="Add a comment..." onChange={(e)=> this.setState({body: e.target.value})} value={this.state.body}/>
                         <input type="submit" value=""></input>
                     </form>
+                    <LoadingModal loading={this.state.loading}/>
+
                 </>
 
             ) : ("")
