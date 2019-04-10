@@ -3,7 +3,7 @@ import React from 'react';
 class PostIndexItem extends React.Component {
     componentDidMount() {
         this.img.onload = () => {
-            if(this.img.width === this.img.height && this.img.width >= 450){
+            if(this.img && this.img.width === this.img.height && this.img.width >= 450){
                 this.img.style.height = "100%"
             }
         }
