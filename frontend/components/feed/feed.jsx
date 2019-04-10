@@ -14,6 +14,13 @@ class Feed extends React.Component {
     super(props)
     this.state = {pages: 1}
   }
+
+  componentDidMount() {
+    if(document.querySelector('#root').clientHeight - scrollY <= innerHeight && this.state.pages * 9 < this.props.numPosts ){
+      this.setState({pages: this.state.pages + 1})
+    }
+  }
+  
   
   getPostIndexes() {
     const postIndexes = []
