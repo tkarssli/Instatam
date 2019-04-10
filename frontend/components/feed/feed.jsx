@@ -24,7 +24,7 @@ class Feed extends React.Component {
   }
   render() {
     document.addEventListener('scroll',  () => {
-      if(document.querySelector('#root').clientHeight - scrollY === innerHeight && this.state.pages * 9 < this.props.numPosts ){
+      if(document.querySelector('#root').clientHeight - scrollY <= innerHeight && this.state.pages * 9 < this.props.numPosts ){
         this.setState({pages: this.state.pages + 1})
       }
     })
