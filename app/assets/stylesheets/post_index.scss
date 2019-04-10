@@ -2,10 +2,15 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    flex-grow: 1;
     position: relative;
+    // height: 321px;
+    flex-grow: 1;
+}
 
+.post-index:nth-of-type(1){
     margin-top: 16px;
+//    .index-row:nth-of-type(3){
+//    }
 }
 
 

@@ -4,8 +4,9 @@ import { fetchPosts } from '../../actions/post_actions';
 import { openPostModal, openLoadingModal, closeLoadingModal } from '../../actions/modal_actions';
 import { receiveScroll } from '../../actions/scroll_actions'
 
-const mSP = state => ({
+const mSP = (state, ownProps) => ({
     posts: state.entities.posts,
+    pages: ownProps.pages,
     id: null
 })
 

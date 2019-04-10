@@ -25,7 +25,7 @@ class LoadingModal
 
 const mapStateToProps = state => {
   return {
-    loading: state.ui.modal.loading,
+    // loading: state.ui.modal.loading,
   };
 };
 

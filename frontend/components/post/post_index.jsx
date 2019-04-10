@@ -2,32 +2,29 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import PostIndexItem from './post_index_item';
-import PostModal from '../modal/post_modal'
-import SettingsModal from '../modal/settings_modal'
 import LoadingModal from '../modal/loading_modal'
 import { scrollBody } from '../../lib/dom';
 
 class PostIndex extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { post: null}
+        this.state = { post: null, loading: true}
     }
 
     componentDidUpdate(prevProps, prevState) {
         if(this.props.match.params.userId !== prevProps.match.params.userId){
             scrollBody(0)
-            this.props.openLoadingModal();
+            this.setState({loading: true})
             this.props.action(this.props.match.params.userId)
-                .then(() => this.props.closeLoadingModal())
+                .then(()=>this.setState({loading: false}))
         }
         
     }
 
     componentDidMount() {
-        scrollBody(0)
-        this.props.openLoadingModal();
+        // scrollBody(0)
         this.props.action(this.props.match.params.userId)
-            .then(()=>this.props.closeLoadingModal())
+            .then(()=>this.setState({loading: false}))
     }
 
 
@@ -44,11 +41,13 @@ class PostIndex extends React.Component {
             let user_posts = [];
             s.forEach((post) => post.id === (this.props.id ? user_posts.push(post) : user_posts.push()));
             user_posts.sort(comparable);
+            this.props.pages ?  user_posts = user_posts.slice(this.props.pages, this.props.pages+9) : null;
             item_components = user_posts.map(post => <PostIndexItem post={post} key={post.id} openPostModal={this.props.openPostModal}/>)
         } else {
             // Main page index
-            console.log(posts)
             posts.sort(comparable)
+            this.props.pages ?  posts = posts.slice((this.props.pages-1)*9, ((this.props.pages-1)*9)+9) : null;
+           
             item_components = posts.map(post => <PostIndexItem post={post} key={post.id} openPostModal={this.props.openPostModal}/>)
         }
         let res = []
@@ -67,9 +66,7 @@ class PostIndex extends React.Component {
         const { posts } = this.props
         return (
             <div className="post-index">
-            <LoadingModal />
-            <PostModal />
-            <SettingsModal />
+            <LoadingModal loading={this.state.loading}/>
 
                 {this.formatGrid(Object.values(posts))}
             </div>
