@@ -50,7 +50,7 @@ class Post extends React.Component{
                     {user.avatar ? (
                             <img src={user.avatar}/>
                         ):(
-                            <img src="/assets/default_avatar.svg"/>
+                            <img src={window.defaultAvatar}/>
 
                         )}
                     <div>
