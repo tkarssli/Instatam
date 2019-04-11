@@ -40,6 +40,7 @@ class Post extends React.Component{
     render() {
         const { post, user, currUser} = this.props;
         return (
+            
             <article className="post post-detail">
             
                 <div className="image-container">

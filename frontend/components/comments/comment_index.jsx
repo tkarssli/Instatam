@@ -57,10 +57,11 @@ class CommentIndex extends React.Component {
 
     render() { 
         const { comments, users, clearModals, currUserId, deleteComment, post} = this.props
-        const formatted_date = new Date(post.createdAt).toLocaleString("en-US",{ year: 'numeric', month: 'long', day: 'numeric' })
+        let formatted_date;
         return (
-            comments ? (
+            post ? (
                 <>  
+                {formatted_date = new Date(post.createdAt).toLocaleString("en-US",{ year: 'numeric', month: 'long', day: 'numeric' })}
                     <div className="comment-feed">
 
                         <div >

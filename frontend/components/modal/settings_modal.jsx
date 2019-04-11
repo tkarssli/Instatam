@@ -31,7 +31,7 @@ class SettingsModal extends React.Component {
                 return null;
         }
         return (
-            <div id="modal" className="modal-background" onClick={closeSettingsModal}>
+            <div id="modal" className="modal-background modal-settings" onClick={closeSettingsModal}>
             <div className="modal-button"/>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
                 { component }

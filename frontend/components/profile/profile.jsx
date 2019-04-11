@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import SettingsModal from '../modal/settings_modal';
+import PostModal from '../modal/post_modal';
 import UserPostsIndexContainer from '../post/user_post_index_container';
 import { scrollBody } from '../../lib/dom';
 
@@ -57,10 +58,11 @@ class Profile extends React.Component {
                         )
                     }
                     
-        return (  
-            this.props.user ? (
+        return ( 
+            <>
+            {this.props.user ? (
                 <>
-                    <SettingsModal />
+                    
                     <div className="profile">
                         <header>
                             <div>
@@ -103,7 +105,10 @@ class Profile extends React.Component {
                 <div className="loader"> 
                     <div className="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                 </div>
-            )
+            )}
+            <SettingsModal />
+            <PostModal />
+            </>
         );
     }
 }

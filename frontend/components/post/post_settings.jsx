@@ -8,7 +8,7 @@ import { closeSettingsModal, clearModals } from '../../actions/modal_actions';
 import { deletePost } from '../../actions/post_actions';
 
 
-function PostSettings({ modal, currUserId , clearModals, deletePost, closeSettingsModal, history}) {
+function PostSettings({ modal, currUserId , clearModals, deletePost, closeSettingsModal, history, location}) {
     const handleClick = () => {
         clearModals()
         // body.classList.remove('no-scroll')
@@ -18,7 +18,9 @@ function PostSettings({ modal, currUserId , clearModals, deletePost, closeSettin
         deletePost(modal.post.id)
         .then(() => {
             clearModals()
-            history.push('/')
+            if(location.pathname.split('/')[1] === 'p'){
+                history.push('/')
+            }
         })
     }
     
