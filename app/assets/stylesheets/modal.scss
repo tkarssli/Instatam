@@ -6,7 +6,7 @@
     left: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 10;
-    
+
     .modal-button {
       background: 0 0;
       border: 0;
@@ -22,6 +22,10 @@
       top: 0;
       z-index: 2;
     }
+}
+
+.modal-settings{
+  z-index: 20;
 }
   
 .modal-child {
