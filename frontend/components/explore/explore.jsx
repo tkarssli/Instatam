@@ -21,6 +21,7 @@ class Explore extends React.Component {
 
     return (
       <>
+        <h2 className="title-break">Explore</h2>
         {this.props.numFollows ? (
           <Feed component={ExplorePostIndexContainer} />
         ):(null)}
