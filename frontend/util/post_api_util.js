@@ -12,6 +12,14 @@ export const fetchUserPosts = (id) => (
     })
 )
 
+export const fetchExplore = () => (
+    $.ajax({
+        method: "GET",
+        url: `api/posts/explore`,
+    })
+)
+
+
 export const fetchPost = id => (
     $.ajax({
         method: "GET",

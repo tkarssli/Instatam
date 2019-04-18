@@ -14,8 +14,17 @@ export const fetchPosts = () => dispatch => (
             dispatch(postError(err.responseJSON))
         ))
 )
+
 export const fetchUserPosts = (id) => dispatch => (
     APIUtil.fetchUserPosts(id)
+        .then(posts => dispatch(receivePosts(posts)),
+        err => (
+            dispatch(postError(err.responseJSON))
+        ))
+)
+
+export const fetchExplore = () => dispatch => (
+    APIUtil.fetchExplore()
         .then(posts => dispatch(receivePosts(posts)),
         err => (
             dispatch(postError(err.responseJSON))
