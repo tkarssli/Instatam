@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Link, Switch, HashRouter } from 'react-router-dom'
-import PostIndexContainer from '../post/post_index_container'
+// import PostIndexContainer from '../post/post_index_container'
 import { timingSafeEqual } from 'crypto';
 import { connect } from 'react-redux';
 
@@ -15,7 +15,16 @@ class Feed extends React.Component {
     this.state = {pages: 1}
   }
 
+  componentDidMount() {
+    document.addEventListener('scroll',  () => {
+      if(Math.floor(document.querySelector('#root').clientHeight - scrollY) <= innerHeight && this.state.pages * 9 < this.props.numPosts ){
+        this.setState({pages: this.state.pages + 1})
+      }
+    })
+  }
+
   componentDidUpdate(){
+    console.log(Math.floor(document.querySelector('#root').clientHeight - scrollY)  <= innerHeight)
     if(Math.floor(document.querySelector('#root').clientHeight - scrollY)  <= innerHeight) {
       this.setState({pages: this.state.pages + 1})
     }
@@ -23,18 +32,15 @@ class Feed extends React.Component {
   
   
   getPostIndexes() {
+    const Component = this.props.component;
     const postIndexes = []
     for(let i=0; i < this.state.pages; i++){
-      postIndexes.push( <PostIndexContainer pages={i+1}/> )
+      postIndexes.push( <Component pages={i+1}/> )
     }
     return postIndexes;
   }
   render() {
-    document.addEventListener('scroll',  () => {
-      if(Math.floor(document.querySelector('#root').clientHeight - scrollY) <= innerHeight && this.state.pages * 9 < this.props.numPosts ){
-        this.setState({pages: this.state.pages + 1})
-      }
-    })
+    
     return (
       <>
         {this.getPostIndexes()}

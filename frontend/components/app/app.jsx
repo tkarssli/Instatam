@@ -12,7 +12,8 @@ import ProfileContainer from '../profile/profile_container';
 import UploadPostFormContainer from '../post/upload_post_form_container';
 import EditPostFormContainer from '../post/edit_post_form_container';
 import PostContainer from '../post/post_container';
-import Feed from '../feed/feed';
+import FeedPage from '../feed/feed';
+import ExplorePage from '../explore/explore'
 
 const App = ({currentUser}) => (
         <HashRouter>
@@ -22,11 +23,12 @@ const App = ({currentUser}) => (
                     {currentUser ? (
                         <>
                             <Switch>
-                                <Route exact path="/" component={Feed} />
+                                <Route exact path="/" render={ () => <FeedPage component={PostIndexContainer}/>} />
                                 <Route exact path="/p/:postId" component={PostContainer} />
                                 <Route path="/p/:postId/edit" component={EditPostFormContainer} />
                                 <Route path="/:userId(\d+)" component={ProfileContainer} />
                                 <Route path="/upload" component={UploadPostFormContainer} />
+                                <Route path="/explore" component={ExplorePage} />
                                 <AuthRoute exact path="/login" component={LoginFormContainer}/>
                                 <AuthRoute exact path="/signup" component={SignupFormContainer}/>
                                 <Route component={PageNotFoundContainer} />
