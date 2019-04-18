@@ -26,5 +26,13 @@
         font-size: 12px;
     }
 
+    .socials{
+        display: flex;
+
+        >a{
+            margin-right: 10px;
+        }
+    }
+
 
 }
