@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     delete 'users/:user_id/follows', :to => 'follows#destroy'
     get 'users/:user_id/posts', :to => 'posts#user_posts'
+    get 'posts/explore', :to => 'posts#user_explore'
     resource :session, only: [:create, :destroy]
     # Posts
     resources :posts, only: [:index, :show, :create, :update, :destroy] do 

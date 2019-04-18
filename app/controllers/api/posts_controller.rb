@@ -7,7 +7,13 @@ class Api::PostsController < ApplicationController
     end
 
     def user_posts
-        @posts = Post.with_attached_photo.all.where(user_id: params[:user_id])
+        @posts = Post.with_attached_photo.where(user_id:  params[:user_id])
+        render :index
+    end
+
+    def user_explore
+        follow_ids = User.find_by({id: current_user.id }).follow_ids
+        @posts = Post.with_attached_photo.where(user_id: follow_ids)
         render :index
     end
 
