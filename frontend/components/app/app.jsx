@@ -23,7 +23,12 @@ const App = ({currentUser}) => (
                     {currentUser ? (
                         <>
                             <Switch>
-                                <Route exact path="/" render={ () => <FeedPage component={PostIndexContainer}/>} />
+                                <Route exact path="/" render={ () => (
+                                    <>
+                                        <h2 className="title-break">Feed</h2>
+                                        <FeedPage component={PostIndexContainer}/>
+                                    </>
+                                )} />
                                 <Route exact path="/p/:postId" component={PostContainer} />
                                 <Route path="/p/:postId/edit" component={EditPostFormContainer} />
                                 <Route path="/:userId(\d+)" component={ProfileContainer} />
