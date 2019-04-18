@@ -57,11 +57,9 @@ class CommentIndex extends React.Component {
 
     render() { 
         const { comments, users, clearModals, currUserId, deleteComment, post} = this.props
-        let formatted_date;
         return (
             post ? (
                 <>  
-                {formatted_date = new Date(post.createdAt).toLocaleString("en-US",{ year: 'numeric', month: 'long', day: 'numeric' })}
                     <div className="comment-feed">
 
                         <div >
@@ -87,7 +85,7 @@ class CommentIndex extends React.Component {
                     <div className="likes">
                         <span className="bold">{post.likedUserIds.length} likes</span>
                     </div>
-                    <div className="createdAt">{formatted_date}</div>
+                    <div className="createdAt">{new Date(post.createdAt).toLocaleString("en-US",{ year: 'numeric', month: 'long', day: 'numeric' })}</div>
                     <form >
                         <textarea onKeyDown={this.onEnterPress} placeholder="Add a comment..." onChange={(e)=> this.setState({body: e.target.value})} value={this.state.body}/>
                         <input type="submit" value=""></input>
