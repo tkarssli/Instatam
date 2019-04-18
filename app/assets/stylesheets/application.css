@@ -50,6 +50,7 @@ section.main-content {
     flex-grow: 1;
     max-width: 935px;
     width: 100%;
+    padding-top: 60px;
 }
 
 a {
