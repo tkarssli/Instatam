@@ -91,10 +91,10 @@ Store built to be flat to allow for single source of truth across entire app. Al
 
 ## Future Plans
 
-### Infinite Scroll
+### Infinite Scroll (Implemented)
 
 When the amount of images in the database becomes too large, the Post index will load the dom relatively quickly but the images then take considerably longer. The Post index page would fetch only a certain number of images (~25), then when the user scrolls down past a certain distance in the page, another fetch request would occur and add more images to the page. This implementation would allow for a smoother user experience.
 
-### Explore Page
+### Explore Page (Implemented)
 
 A user could view a explore page that has a Post index populated with other Users posts. The logic for determining what users post will initially be simple, users that share the most followed users will be prioritized. More intelligent population of the explore page is planned.
