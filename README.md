@@ -18,7 +18,7 @@ This personal project uses Ruby on Rails with a PostgreSQL database on the back 
 
 Instatam's database is comprised of three main entities - users, posts and comments
 
-and two supplemental features - likes and posts
+and two supplemental features - likes and follows
 
 * Secure frontend to backend user authentication using BCrypt.
 * Users can create and edit posts by uploading a photo from their device.
